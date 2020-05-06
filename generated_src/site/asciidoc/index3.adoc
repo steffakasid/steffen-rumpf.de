@@ -1,0 +1,27 @@
+:linkattrs: true
+
+[.pagination]
+--
+link:index.html["0"]
+link:index1.html["1"]
+link:index2.html["2"]
+link:index3.html["3", role=active]
+--
+== Customized my Blog
+
+Posted on: 05-07-2008 by sid
+
+include::articles/20080705.adoc[]
+
+== Endorsement:: Gentto Linux on my AMD 64 X2 4200+ Worksation
+
+Posted on: 04-07-2008 by sid
+
+include::articles/20080804_2.adoc[]
+
+== Created my own blog
+
+Posted on: 04-07-2008 by sid
+
+include::articles/20080704.adoc[]
+

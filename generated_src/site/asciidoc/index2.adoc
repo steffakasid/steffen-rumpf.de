@@ -1,0 +1,69 @@
+:linkattrs: true
+
+[.pagination]
+--
+link:index.html["0"]
+link:index1.html["1"]
+link:index2.html["2", role=active]
+link:index3.html["3"]
+--
+== My new and my old toy
+
+Posted on: 01-04-2009 by sid
+
+include::articles/20090401.adoc[]
+
+== MS-Project under Linux
+
+Posted on: 17-09-2008 by sid
+
+include::articles/20080917.adoc[]
+
+== Recommendations to read (Part 1)
+
+Posted on: 10-09-2008 by sid
+
+include::articles/20080910.adoc[]
+
+== ServiceMix :: FTP Component
+
+Posted on: 09-09-2008 by sid
+
+include::articles/20080909_2.adoc[]
+
+== Working with Smooks
+
+Posted on: 09-09-2008 by sid
+
+include::articles/20080909.adoc[]
+
+== Installing Latex on Gentoo (with bibtex and nomencl)
+
+Posted on: 12-08-2008 by sid
+
+include::articles/20080812.adoc[]
+
+== Impressions from India
+
+Posted on: 06-08-2008 by sid
+
+include::articles/20080806.adoc[]
+
+== My cousin is under the 'cap'...
+
+Posted on: 14-07-2008 by sid
+
+include::articles/20080714.adoc[]
+
+== What the fuck is an Enterprise Service Bus (ESB)
+
+Posted on: 09-07-2008 by sid
+
+include::articles/20080709.adoc[]
+
+== Working with maven and servicemix
+
+Posted on: 05-07-2008 by sid
+
+include::articles/20080705_2.adoc[]
+

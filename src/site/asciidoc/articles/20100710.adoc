@@ -1,0 +1,24 @@
+hat 600W an 4 Ohm, zwei schaltbare 8" und ein regelbare Horn und ist seit gestern die neue Box unter meinem Ampeg AP-3550 und SVT-IIP. Aber von 
+image:http://www.withouthat.org/~sid/upload/IMG_0488.JPG[FMC 2158 Neo L, 259, 346, float="right"]
+vorne... nach ca. 4 Monaten Diskussionen mit Hans (Hans Struck = Eigentümer von FMC), viel lesen zu FMC Boxen auf bassic.ch und schluss endlich reiner Wartezeit aufgrund der Terminplanung von Hans war es gestern endlich so weit und ich konnte nach Ingolstadt fahren und meine Box in Empfang nehmen. Kleiner Tip am Rande: Wenn ihr die Möglichkeit habt fahrt auf jeden Fall persönlich in Ingolstadt vorbei. Wieso? Naja Hans ist super nett und erklärt euch alles rund um die Boxen - aus erster Hand - führt sie selber vor und gibt ansonsten noch jede Menge persönliche Erfahrungen und Tips zu den eigenen Boxen.
+
+Wieder in Mannheim angekommen ging es direkt erstmal in den Poberaum, die Box am eigenen Verstärker testen. Der erste Eindruck war einfach nur WOOOW . Die Box ist im Vergleich zu meiner alten (4*10 Hartke VX) mindestens 1/3 lauter .
+
+Heute ging es dann wieder in den Proberaum ausführliches testen und aufnehmen mit unterschiedlichen Settings (wobei da noch unendlich weitere Möglichkeiten drin sind alleine aufgrund des regelbaren Horns). Aber für einen zweiten Eindruck war das auf jeden Fall mal super. Am besten gefällt mir persönlich momentan die Einstellung mit abgeschalteten Horn und den 8"ern auf der niedrigen Frequenz. Das ergibt einfach einen so genial knurrigen Sound mit viel Attack, mit angeschaltetem Horn wird das Ganze noch ne ziemliche Ecke spritziger was vor allem fürs Slappen ziemlich geil kommt. Dabei liefern die 15"er immer schön viel Tiefbass.
+
+Zu den Soundfiles: Alle Aufnahmen habe ich mit den gleichen Settings gemacht (zumindest für die FMC Box, für die Hartke musste ich den Amp um einiges weiter aufdrehen um überhaupt was zu hören...). Eingespielt wurde alles mit meinem Warwick Fortess One. Wobei ich beide Picups aktiv hatte (Regler in Mittelposition) auf dem Halsnahen PU hatte ich die Höhenblende ganz rausgedreht und auf dem 
+image:http://www.withouthat.org/~sid/upload/IMG_0490.JPG[Settings, 230, 173, float="right"] Singlecoil (Steg PU) die Höhenblende ganz rein. Das entspricht dem Setting, dass ich ziemlich häufig nutze, da mir der Klang einfach total taugt. An der Vorstufe war alles neutral eingestellt, der Presence Regler der Endstufe voll auf (der Volumeregler war anders als auf dem Bild auf ca. 11 Uhr).
+ 
+== Soundfiles:
+
+link:http://www.withouthat.org/~sid/upload/15er_only.wav.mp3[Die 15er alleine^]
+
+link:http://www.withouthat.org/~sid/upload/15er+8er.wav.mp3[Mit aktivierten 8er]
+
+link:http://www.withouthat.org/~sid/upload/15er+8er+Horn.wav.mp3[Mit 8er und aktiviertem Horn auf ca. 50%]
+
+link:http://www.withouthat.org/~sid/upload/vx410.wav.mp3[Als Vergleich das gleiche mit der Hartke vx410]
+
+Meiner Meinung nach merkt man den Unterschied der Boxen bei neutralen Einstellungen noch nicht so stark. Die FMC wirkt insgesamt etwas klarer vom Klangbild und es besteht ein großer Unterschied beim Wirkungsgrad für die Aufnahmen musste ich bei der vx410 ca. 1/4 lauter aufdrehen. Noch stärker fällt der klangliche Unterschied auf, wenn man etwas am EQ rumspielt beispielsweise Bässe aufreißt etc.
+
+Zu den Aufnahmen der FMC Box: Es wären noch viele andere Kombinationen möglich. Da die 8"er sich im Frequenzbereich noch zweistufig schalten lassen (einmal eher höhere und einmal eher tiefere Frequenzen). Das gleiche gilt für das Horn, was zu dem noch stufenlos schaltbar ist. Wenn sich jemand her verirrt und gerne nen bestimmten Klang hören würde (und ich die Zeit finde) kann ich gerne mal noch andere Beispiele hinzufügen.

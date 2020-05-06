@@ -1,0 +1,3 @@
+… for at last nearly a year now I am working in (I think) one of the biggest SOA projects in Germany. My task ist to design services. So for now I don’t have to code them. The main goal of this services is to make all services busines object modell (BOM) alligned and to provide process automation. For the design we use UML activity diagrams and we write a service-documentation in MS word which describe how to use this services…
+
+So in my current opinion: “SOA is not dead” 🙂
