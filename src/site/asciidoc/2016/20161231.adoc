@@ -1,0 +1,84 @@
+:site-date: 31-12-2016
+:site-title: Curves Presets for Lightroom
+:site-author: sid
+:site-tags: Lightroom, Photography, Curves, Presets
+
+Today I created a few curves presets to be used in lightroom: 
+link:misc/2016/12/Curves.zip[Curves.zip^]
+
+To use them you just need to unzip the file into ``C:\Users\&lt;YOUR USERNAME&gt; \AppData\Roaming\Adobe\CameraRaw\Curves`` and restart Lightroom.
+
+Most of them can be used to give your pictures a special toning:
+The first 8 are S curves (or inverted S curves) based on the color chanels. The naming pattern means that the color in upper case letters is boosted in the highlights and reduced in the shadows. Here are some samples:
+
+The base Image is:
+
+image::images/2016/12/00001-00017-150x150.jpg[00001-00017-150x150.jpg,150,150]
+
+[cols="4"] 
+|===
+| 1_REDGREENBLUE 
+| 2_redGREENBLUE
+| 3_REDgreenBLUE
+| 4_redgreenBLUE
+
+a| 
+image::images/2016/12/00017-00017-150x150.jpg[00017-00017-150x150.jpg, 150, 150]
+a|
+image::images/2016/12/00016-00017-150x150.jpg[00016-00017-150x150.jpg, 150, 150]
+a|
+image::images/2016/12/00015-00017-150x150.jpg[00015-00017-150x150.jpg, 150, 150]
+a|
+image::images/2016/12/00014-00017-150x150.jpg[00014-00017-150x150.jpg, 150, 150]
+
+| 5_REDGREENblue
+| 6_redGREENblue
+| 7_REDgreenblue 
+| 8_redgreenblue
+
+a| 
+image::images/2016/12/00013-00017-150x150.jpg[00013-00017-150x150.jpg, 150, 150]
+a|
+image::images/2016/12/00012-00017-150x150.jpg[00012-00017-150x150.jpg, 150, 150]
+a|
+image::images/2016/12/00011-00017-150x150.jpg[00011-00017-150x150.jpg, 150, 150]
+a|
+image::images/2016/12/00010-00017-150x150.jpg[00010-00017-150x150.jpg, 150, 150]
+|===
+
+
+And there are a few other "creative" presets:
+[cols="4"] 
+|===
+| Crossentwicklung 
+| InstagramLook
+| IsThisRetro
+| Solarisation
+
+a| 
+image::images/2016/12/00009-00017-150x150.jpg[00009-00017-150x150.jpg, 150, 150]
+a|
+image::images/2016/12/00007-00017-150x150.jpg[00007-00017-150x150.jpg, 150, 150]
+a|
+image::images/2016/12/00006-00017-150x150.jpg[00006-00017-150x150.jpg, 150, 150]
+a|
+image::images/2016/12/00005-00017-150x150.jpg[00005-00017-150x150.jpg, 150, 150]
+
+| StylizedBlue 
+| StylizedGreen
+| StylizedRed
+| 
+
+a| 
+image::images/2016/12/00004-00017-150x150.jpg[00004-00017-150x150.jpg, 150, 150]
+a|
+image::images/2016/12/00003-00017-150x150.jpg[00003-00017-150x150.jpg, 150, 150]
+a|
+image::images/2016/12/00002-00017-150x150.jpg[00002-00017-150x150.jpg, 150, 150]
+a|
+
+|===
+
+At least there is one preset which is special. It's called FindErrors and can be used to find errors like dust on the sensor or the lens:
+
+image::images/2016/12/00008-00017-150x150.jpg[00008-00017-150x150.jpg, 150,150]

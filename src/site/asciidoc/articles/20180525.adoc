@@ -1,6 +1,0 @@
-:site-date: "25-05-2018"
-:site-title: "Updated website"
-:site-author: "sid"
-:site-tags: "PC-Krams, Site"
-
-I've just updated the website. Basically I just did a little bit theme styling / refactoring and I've added some data privacy notes as today the EU General Data Protection Regulation (GDPR) have gone into effect. I think as a private person this doesn't affect me to much here. But just for the case. Anyway this website is basically text, so I don't collect any data if you visit side. That beeing saied... Have a nice weekend!

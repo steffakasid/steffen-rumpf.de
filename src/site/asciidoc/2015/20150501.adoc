@@ -1,0 +1,101 @@
+:site-date: 01-05-2015
+:site-title: GimpPython Plguin: Add all open Images as layer into one
+:site-author: sid
+:site-tags: Gimp, Python
+:source-highlighter: highlightjs
+
+I've just created a little script to make time stacking pictures easier. It just adds all open pictures into the current selected one.
+
+[source,python,linenums]
+----
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# GIMP plugin to set all visible layers to the same mode
+# (c) steffakasid 2012
+#
+#   History:
+#
+#   v1.0: 2015-30-04: First published version
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+from gimpfu import *
+
+def openImagesAsLayers(selected_image,debug):
+    try:
+        if(debug == True):
+            gimp.message("Starting to add all images...")
+    
+        selected_image_name = pdb.gimp_image_get_name(selected_image)
+        
+        if(debug == True):
+            gimp.message("Base image selected: "+selected_image_name)
+        
+        image_file_list = gimp.image_list()
+        if(debug == True):
+            gimp.message("Received file list: "+str(image_file_list))
+        
+        for image_to_load in image_file_list:
+            image_path = pdb.gimp_image_get_filename(image_to_load)
+            image_name = pdb.gimp_image_get_name(image_to_load)
+            if(debug == True):
+                gimp.message(image_path)
+            
+            if(selected_image_name == image_name):
+                if(debug == True):
+                    gimp.message("Skipping selected image to not add it again: "+selected_image_name)
+            else:
+                # load image as new layer of the selected_image
+                layer = pdb.gimp_file_load_layer(selected_image,image_path)
+            
+                if(layer is None):
+                    if(debug == True):
+                        gimp.message("The image "+image_path+" could not be transferred into a new layer!")
+                if(debug == True):
+                    gimp.message("Adding layer")
+                    
+                # Add new layer to the selected_image
+                pdb.gimp_image_insert_layer(selected_image, layer, None, 0)
+                
+                # Close image when it was added
+                gimp.delete(image_to_load)
+                gimp.displays_flush()
+    except Exception as err:
+        gimp.message("Unexpected error: " + str(err))
+        
+    gimp.message("Processing finished!")
+
+### Registrations
+    
+register(
+    "open-images-as-layers",
+    "Adds all images into the selected one as new layers!",
+    "Adds all images into the selected one as new layers!",
+    "steffakasid",
+    "steffakasid",
+    "2015",
+    "Add open images into one as new layers",
+    "*",
+    [
+        (PF_IMAGE, "image", "Input image", None),
+        (PF_BOOL, "debugging", "Enable debugging. Error Console should be open!", False)
+    ],
+    [],
+    openImagesAsLayers,
+    menu="<Image>/Image")
+
+main()
+----

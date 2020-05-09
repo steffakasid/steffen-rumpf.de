@@ -1,0 +1,52 @@
+:site-date: 06-11-2011
+:site-title: Got Android 2.3.7 on my X10 mini
+:site-author: sid
+:site-tags: Android
+
+Hey finally I got Android 2.3.7 working on my Sony Ericsson X10 mini. Which is currently not official supportet and I guess it will never be supported by Sony Ericsson. So I used a custom rom build by CyanogenMod (http://www.cyanogenmod.com). It was not such easy because there was no 1:1 howto and I had to search multiple howto's (programs and kernels as well) for each step. In the meantime I fleshed with a wrong kernel what leads to system freeze during bootup and was much trouble to flash it back, because it didn't let me into flash mode. So this post is also not a all in one howto but it lists all needed steps with corresponding links to the howto's for the details and hopefully it will help others to got it working easier then for me.
+
+So which steps are required to get Android 2.3.7 working. Basicly this are the following steps:
+
+. Root your phone
+. Unlock the bootloader
+. Flash new kernel with ClockworkMod Recovery
+. Install new Rom
+
+I recommend to get at first the new customs roms. For the x10 mini mobile you can find them here: http://forum.cyanogenmod.com/topic/32778-cyanogenmod-7-for-the-xperia-x10-mini-v710-11-oct-2011/ I also recommend to download the clean mod and the google apps either. Because the google apps make it much easier to enable a google account on the phone. When you downloaded the mod put it on the sdcard of your phone.
+
+The next step is rooting the phone. This can be easily done by using flashtool. How to get it and to use it is described here: http://forum.xda-developers.com/showthread.php?t=920746
+
+When the phone is rooted we are now able to unlock the bootloader. A description how doing that can be found at: http://forum.xda-developers.com/showthread.php?t=1254225
+
+When we have a unlocked bootloader we can go on flashing the device with a kernel which has ClockwordMod Recovery with it. For that I used the following kernel (I guess it is a x10 mini kernel for the newer replacement model but for me it works with some limitation) http://forum.xda-developers.com/showthread.php?t=1309972 To get into the recovery mode was a little bit strange for me. If your boot you phone, you will the a damaged blured image. What I did was pressing all the menu key and the back key of the phone several times and then I got into the recovery mode (I can not finally say what was the right key but I guess it must be the menu key :) ). When you are in recovery mode you can install the rom by using install zip file from sdcard (you have to choose the zip file you put on the sdcard on the begining and you have to do it twice if you also want to install the google apps; first start cyanogenmod second the googleapps zip). If that is finished you only have to go back and use a "working" kernel, so I used the kernel provided in the cyanogenmod zip file and created a custom "flash package". How to do that is described here:  http://androidforums.com/2243505-post4.html
+
+Maybe its also possible to to the installation with that last kernel but I did not tried that. Whats here described is my way to do it and what worked for me.
+
+At least it has to be said that I give no quaranty that this way will work for you and I also give no quarantiy for damage on your phone while doing flash stuff etc. so if you try it, you try it on your own risk.
+
+Issues with the new rom:
+
+. There is one big issues I currently have: Its related to low voice volume during phone calls. I hope that will be fixed soon. I'am not sure if it is related to the kernel or a problem of the dialer app so I will try another dialer maybe it will be better.
+. One second issue which is annoying but not such a big thing. This is related to the 3G internet mode which sometimes crashes and then didn't gets any internet access. So in this point I had to reboot my phone then its working again.
+
+News about the mod can be found at the cyanogenmod page so visit there to be updated.
+
+Happy flashing ;)
+
+=== Homescreen:
+
+image::images/2011/11/screenshot-1320063084393.png[Homescreen unlocked, 225, 300, align="left", float="left"]
+
+image::images/2011/11/screenshot-1320063071085.png[Homescreen locked, 225, 300, align="right"]
+
+=== System Information after update:
+
+image::images/2011/11/screenshot-1320000423804.png[screenshot-1320000423804, 225, 300, align="left", float="left"]
+
+image::images/2011/11/screenshot-1320000369306.png[screenshot-1320000369306, 225, 300, align="right"]
+
+
+
+
+[quote, Update: 10-11-2011 by sid]
+I maybe found something better (not tried right now but seems so). Will try it on the weekend or maybe earlier. Its a custom rom based on CM7.1 specially for X10 mini. So hopefully the issues listed above are fixed there: http://forum.xda-developers.com/showthread.php?t=1068553

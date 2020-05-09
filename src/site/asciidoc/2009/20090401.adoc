@@ -1,0 +1,30 @@
+:site-date: 01-04-2009
+:site-title: My new and my old toy
+:site-author: sid
+:site-tags: Bass, Musik
+
+Currently I play a lots of bass. So I've searched a new teacher and bought a new instrument which I want to present here:
+
+*Here is the new one a Esh Various Bass in sandbasted black:*
+--
+image::images/2009/04/Various-4.jpg[Esh Various, 300, 225]
+--
+
+--
+image::images/2009/04/Various-5.jpg[Esh Various Body, 300, 225]
+--
+
+--
+image::images/2009/04/Various-3.jpg[Esh Various Impressive, 300, 225]
+--
+
+*And some picutres of my old Warwick FortressOne in natural oil finish:*
+--
+image::images/2009/04/FortressOne-5.jpg[Warwick FortessOne Kopfteil, 300, 225]
+--
+
+--
+image::images/2009/04/FortressOne-10.jpg[Warwick FortressOne Body, 300, 225]
+--
+
+Lets rock :)

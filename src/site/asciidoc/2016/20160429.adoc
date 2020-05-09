@@ -1,0 +1,30 @@
+:site-date: 29-04-2016
+:site-title: OSB threading and local proxies
+:site-author: sid
+:site-tags: ESB, Oracle, OSB, PC-Krams, SOA, work
+
+The last days I investigated a lot into the osb 11G (Oracle ESB) threading model during my work. I found a few quite nice articles about that topic but sadly they're mostly not really covering these topic together with local proxies (proxy with transport local or at least http proxies which are hosted on the same nodes). If you're not familar with threading in OSB I recomment to read those articles first because I base my assumptions and thoughts on those. My main sources are:
+
+. [[src1]] link:https://docs.oracle.com/cd/E23943_01/dev.1111/e15866/architecture.htm#OSBDV1277[Fusion Middleware Developer's Guide for Oracle Service Bus^]
+. [[src2]] link:http://www.ateam-oracle.com/wp-content/uploads/2013/09/OSBThreadingModelHTTPTransport_1.1.pdf[A whitepaper written by a A-Team member^]
+. [[src3]] link:https://blogs.oracle.com/reynolds/entry/following_the_thread_in_osb[Following the Thread in OSB By Antony Reynolds^]
+. [[src4]] link:http://allthingsmdw.blogspot.de/2012/09/osb-service-callouts-and-oql-part-1.html[Another article from a A-Team member^]
+. [[src5]] link:http://www.javamonamour.org/2013/10/osb-thread-management-across-local.html[OSB thread management across LOCAL Proxy Service invocation^]
+
+In <<src5, [5]>> I found the only information about local proxies and exactly this behaviour we experienced as well. I'll give my understanding here, therefore no quarantee that it's realy like that. I'll only discuss about publish and callouts to local proxies using the coresponding pipeline actions. I'll not talk about proxy chaining as this is already covered in <<src2,[2]>> and <<src3,[3]>>.
+
+=== 1. Publish
+Normally (which means in case of external services) the publish action is completley asynchronous and the calling thread will not block if we use QoS = At least once. If we use QoS = Exactly Once based on <<src2,[2]>> the thread will block until a response (I guess e.g. at least HTTP 200) is received. If we use local threads the behaviour is different (see <<src5,[5]>> for example). In that case in any scenario even if you use QoS = At least once the thread will "block" until the request pipeline of the called thread is finished (if same transaction for response is false, I'll follow up on this later). Therefore if you attend to have asynchronous operation for some logging or something like that it's not asynchronous if you implement it in the request pipeline. You can workaround this by implementing your service
+only in the response pipeline (as the response pipeline always uses a different thread <<src2,[2]>>). I thought a little about that and why it could be like that and in fact I think it's bug. But why is it like that? In my opinion what happens here is the same what happens if we do proxy chaining (see <<src2,[2]>> and <<src3,[3]>> for details). This means that OSB knows with its optimization algorithms that the proxy we're calling is a local one and therefore he tries to execute this local proxy request pipeline with the same thread as the calling proxy. That also basically means that the thread is not blocking but OSB is just first executing everything in the called local proxy request pipeline before executing the following actions in the calling proxy.
+[link=images/2016/04/RouteWithoutSTFR-1024x496.png]
+image::images/2016/04/RouteWithoutSTFR-768x372.png[RouteWithoutSTFR,768,372]
+What I've not tested but I guess that it will work like that: If you set "same transaction for response" to true in the called proxy, the calling thread will completley block until the response pipeline is finished (the same what happens when using callouts).
+
+[link=images/2016/04/RouteWithSTFR-1024x496.png]
+image::images/2016/04/RouteWithSTFR-768x372.png[RouteWithoutSTFR,768,372]
+
+=== 2. Callouts
+For callouts it's not so much a problem as it's expected that the calling thread "blocks". In fact I guess that the behaviour here is exactly the same which would mean that the calling thread will also do the work of the request pipeline of the proxy service which was called. That must basically be kept in mind if you create a proxy to handle some specific transformations for example. Because that would always need an additional thread to handle the response pipeline for that proxy. That's also which in <<src4,[4]>> the recommendation is made not to use a proxy for those purposes. Anyway in case of callouts, the
+calling thread will block until the response is received. For the thread itself it also doesn't matter which QoS you use or if you have same transaction for response set. In that case both settings are only relevant for the transaction behaviour. <<src4,[4]>> discusses in detail how threads block in that case, if you need further information.
+
+That's my current understanding.

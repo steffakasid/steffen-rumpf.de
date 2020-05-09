@@ -1,0 +1,12 @@
+:site-date: 30-10-2016
+:site-title: What I really don't like @ Adobe Lightroom
+:site-author: sid
+:site-tags: Adobe Lightroom, shit doesn't work
+
+When managing my photos I'm using Adobe Lightroom since three years now. To publish my pictures on 500px I've one publishing service where all pictures are added when I mark them with a color label. That works pretty nice. But what I don't like is that I wanted to export the pictures in a ordered way and that doesn't seem to work.<!--more--> As the in camera name is to short because it's IMG_&lt;4 digits&gt;.jpg and the 4 digits are easily reached and then start from the beginning again I wanted to add a prefix which has 5 digits (which would at least allow 99999 pictures). Therefore I created a custom preset which should just add this prefix to the original filename.
+[link=images/2016/04/Lightroom1-746x198.png]
+image::images/2016/10/Lightroom1-300x155.png[RouteWithoutSTFR,300,155]
+
+</a> In general that works pretty good if you always publish the full publishing service at the same time. It does not work if you only add a few images from time to time and publish those pictures separately. In that case the ordering gets completely messed up. As it will start from the beginning every time. Does someone know if there is a way to fix this? I already tried all the different sequencing options in Lightroom but it seems they're all doing the same shit.
+[link=images/2016/04/Lightroom2-1024x206.png]
+image::images/2016/10/Lightroom2-768x155.png[RouteWithoutSTFR,768,155]

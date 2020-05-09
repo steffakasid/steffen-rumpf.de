@@ -1,0 +1,127 @@
+:site-date: 04-11-2010
+:site-title: Create multiline textbox with scrollbar in JavaFX
+:site-author: sid
+:site-tags: Java, JavaFX, PC-Krams
+:source-highlighter: highlightjs
+
+Currently I just played around with JavaFx. For the program I had build I had to use a multiline textbox with scrollbar. After some work here is the result:
+
+[source,java,linenums]
+----
+ /*
+*TextboxMultline.fx
+*
+*Created on Nov 4, 2010, 13:55:56 PM
+*/ 
+
+package de.steffakasid.ui;
+
+import javafx.scene.Group;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.effect.InnerShadow;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextOrigin;
+
+public class TextboxMultiline extends Group {
+    public var width: Float;
+    public var height: Float;
+    public var backgroundColor: Color;
+    public var foregroundColor: Color;
+    public var textContent: String;
+    public var wrappingWidth: Float;
+    public var font: Font;
+     
+    public var enableHorizontalScroll : Boolean = false;
+    public var enableVerticalScroll : Boolean = false;
+    public var enableAutoScroll: Boolean = false; 
+    
+    var clipper: Rectangle = Rectangle {
+        width: bind width - 10, 
+        height: bind height - 10, 
+        y: bind (text.translateY *  - 1) + 5;
+        x: bind (text.translateX *  - 1) + 5;
+    }; 
+    var text: Text = Text {
+        x: bind scrollBarVertical.width, 
+        y: 5, 
+        font: bind font, 
+        fill: bind foregroundColor, 
+        textOrigin : TextOrigin.TOP, 
+        translateY: bind 0 - scrollBarVertical.value, 
+        translateX: bind 0 - scrollBarHorizontal.value, 
+        clip: clipper, 
+        wrappingWidth: bind wrappingWidth;
+    };
+    var textBackground: Rectangle = Rectangle {
+        arcHeight : 10, 
+        arcWidth : 10, 
+        width: bind width, 
+        height: bind height, 
+        fill: bind backgroundColor, 
+        effect: InnerShadow {
+            choke: 0.01, 
+            offsetX: 0, 
+            offsetY: 0, 
+            radius: 5, 
+            color: javafx.scene.paint.Color.BLACK, 
+        }
+    };
+    var scrollBarVertical: ScrollBar = ScrollBar {
+        height: bind height  
+        blockIncrement: 10
+        clickToPosition: true
+        min: 0
+        max: bind if(text.layoutBounds.height > height) text.layoutBounds.height - height else 1 , 
+        vertical: true
+        visible: bind if((height - 10) < text.layoutBounds.height) true else false;
+    }
+    
+    var scrollBarHorizontal: ScrollBar = ScrollBar {
+        layoutY: bind height - 1, 
+        width: bind width, 
+        blockIncrement: 1, 
+        clickToPosition: false, 
+        min: 0, 
+        max: bind if(text.layoutBounds.width > (width - 10)) text.layoutBounds.width - (width - 20) else 1, 
+        vertical: false, 
+        visible: bind if(text.layoutBounds.width > (width - 20)) true else false, 
+    }
+    
+    init {
+        if(null == foregroundColor) {
+            foregroundColor = Color.BLACK;
+        }
+        if(null == backgroundColor) {
+            backgroundColor = Color.WHITE;
+        }
+        if(null != textContent) {
+            text.content += textContent;
+        }
+
+        this.content = [
+        textBackground, 
+        text
+        ];
+        if(enableVerticalScroll == true) {
+            insert scrollBarVertical into this.content
+        }
+        if(enableHorizontalScroll == true) {
+            insert scrollBarHorizontal into this.content
+        }
+    }
+    
+    public function setText(textContent: String) {
+        text.content += textContent;
+        if(enableAutoScroll == true) {
+            scrollBarVertical.value = scrollBarVertical.max;
+        }
+        println("Text bounds: {text.layoutBounds}");
+        println("Scrollbar max: {scrollBarVertical.max}");
+    } 
+};
+----
+
+link:http://www.withouthat.org/~sid/upload/TextboxMultiline.zip[Download source]

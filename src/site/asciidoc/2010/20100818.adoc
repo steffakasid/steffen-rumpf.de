@@ -1,0 +1,63 @@
+:site-date: 18-08-2010
+:site-title: Install busybox on Android
+:site-author: sid
+:site-tags: Android
+:source-highlighter: highlightjs
+
+Da die meisten anderen Tutorials unvollständig waren, hab ich mir mal die Mühe gemacht, die vollständige Anleitung zu veröffentlichen.
+
+. Get busybox (fertig kompiliert für Android) http://files.spacefish.biz/busybox
+
+. Android Phone mit dem PC verbinden (Anleitung gibts hier: http://developer.android.com/guide/developing/device.html
+
+. Push busybox auf das Device (alle adb Befehle müssen aus dem android-sdk/tools Verzeichnis gestartet werden, wenn diese sich nicht in der PATH Variable befindet!)
+
+[source,sh]
+----
+$ ./adb push busybox /data/local/busybox
+----
+Aufgrund der Schreib- bzw. Ausführungsrechte sollte dieses Verzeichnis so beibehalten werden, da sonst busybox nicht ausführbar ist, wenn es beispielsweise auf die Sdcard gepusht wird!
+
+[start=4]
+. Auf das Telefon mit einer Konsole connecten und Telefon vorbereiten
+
+[source,sh]
+----
+./adb shell
+$ su
+$ mount -o rw,remount -t yaffs2 /dev/block/mtdblock3 /system
+$ exit
+----
+
+[start=5]
+. Busybox installieren
+
+[source,sh]
+----
+$ su
+$ cd /data/
+$ mkdir busybox
+# Wenn xbin nicht existiert: 
+$ mkdir /system/xbin
+# sonst direkt:
+$ /data/local/busybox cp /data/local/busybox /system/xbin/busybox
+$ cd /system/xbin
+$ chmod busybox 755
+$ ./busybox --install -s /system/xbin
+$ rm /data/local/busybox
+----
+____
+*Achtung!*
+Teilweise (beispielsweise der cp) Befehl sind nicht bestandteil der in Android verwendeten Shell daher muss in diesem Fall der Befehl aus Busybox verwendet werden. Daraus resultiert der etwas seltsam aussehende Befehl!
+____
+
+[start=6]
+. Telefon neu starten
+
+Busybox Befehle lassen sich dann in der Shell über busybox aufrufen beispielsweise "busybox df". Optional kann man /data/busybox auch noch der PATH Variable zuordneten:
+
+[source,sh]
+----
+$ export PATH=/data/busybox:$PATH
+----
+Falls jemand noch Anmerkungen hat. Einfach anschreiben...

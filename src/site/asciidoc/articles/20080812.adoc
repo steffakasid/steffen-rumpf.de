@@ -1,7 +1,0 @@
-I installed a second time my Gentoo system with Latex. I need bibtex and nomencl for my diploma thesis, so I have to install an extra package.
-
-. Insert tetex USE-FLAG into make.conf
-. emerge texlive
-. emerge texlive-latexextra
-
-The last step is needed for extra packages like nomencl…
