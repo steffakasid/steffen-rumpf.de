@@ -1,7 +1,8 @@
 :site-date: 31-12-2016
-:site-title: Curves Presets for Lightroom
-:site-author: sid
-:site-tags: Lightroom, Photography, Curves, Presets
+
+== Curves Presets for Lightroom
+
+_Posted on {site-date}_
 
 Today I created a few curves presets to be used in lightroom: 
 link:misc/2016/12/Curves.zip[Curves.zip^]

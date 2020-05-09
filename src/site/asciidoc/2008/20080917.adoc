@@ -1,6 +1,7 @@
 :site-date: 17-09-2008
-:site-title: MS-Project under Linux
-:site-author: sid
-:site-tags: PC-Krams
+
+== MS-Project under Linux
+
+_Posted on {site-date}_
 
 For those who need to work with MS-Projectfiles under Linux I’ve found something interesting. There is a program called OpenProject which enables you to open and view MS-Projectfiles. In another blog I found some informations, that it does not include all features offered by MS-Project but for my requirements it was good enough. So I think this could be a good alternativ to the commercial ones.

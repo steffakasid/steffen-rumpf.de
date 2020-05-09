@@ -1,7 +1,8 @@
 :site-date: 04-08-2008
-:site-title: Endorsement:: Gentto Linux on my AMD 64 X2 4200+ Worksation
-:site-author: sid
-:site-tags: Gentoo, Linux
+
+== Endorsement:: Gentto Linux on my AMD 64 X2 4200+ Worksation
+
+_Posted on {site-date}_
 
 Last weekend I’ve found some time to build a linux system for my home workstation (until then I only used a Win XP Installation). After my first tries to reinstall the system with a ubuntu (7.10) installation a view months earlier (a year before there was a Debian/unstable version running on it). I now decided to use a distribution which is not so much “mainstream”. So first I played around with Open Solaris from Sun but sadly, in my opinion, it is an to early release and there are much things I like to use on my Linux desktop which are not supported in the current release. So finally my decision was to use Gentoo. I had planned to use it some years ago, but in that time I thought, that my Unix skills are to low to make it work…
 

@@ -1,7 +1,8 @@
 :site-date: 12-08-2008
-:site-title: Installing Latex on Gentoo (with bibtex and nomencl)
-:site-author: sid
-:site-tags: Latex, Linux
+
+== Installing Latex on Gentoo (with bibtex and nomencl)
+
+_Posted on {site-date}_
 
 I installed a second time my Gentoo system with Latex. I need bibtex and nomencl for my diploma thesis, so I have to install an extra package.
 

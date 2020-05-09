@@ -1,7 +1,8 @@
 :site-date: 10-07-2010
-:site-title: Sie heißt FMC 2153 Neo L...
-:site-author: sid
-:site-tags: Musik, Bass
+
+== Sie heißt FMC 2153 Neo L...
+
+_Posted on {site-date}_
 
 hat 600W an 4 Ohm, zwei schaltbare 8" und ein regelbare Horn und ist seit gestern die neue Box unter meinem Ampeg AP-3550 und SVT-IIP. Aber von 
 image:http://www.withouthat.org/~sid/upload/IMG_0488.JPG[FMC 2158 Neo L, 259, 346, float="right"]

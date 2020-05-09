@@ -1,8 +1,9 @@
-:site-date: 18-08-2010
-:site-title: Install busybox on Android
-:site-author: sid
-:site-tags: Android
 :source-highlighter: highlightjs
+:site-date: 18-08-2010
+
+== Install busybox on Android
+
+_Posted on {site-date}_
 
 Da die meisten anderen Tutorials unvollständig waren, hab ich mir mal die Mühe gemacht, die vollständige Anleitung zu veröffentlichen.
 

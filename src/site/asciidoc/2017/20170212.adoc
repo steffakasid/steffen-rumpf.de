@@ -1,7 +1,8 @@
 :site-date: 12-02-2017
-:site-title: Photoshop CC Keyboard Shortcuts
-:site-author: sid
-:site-tags: PC-Krams, Photoshop
+
+== Photoshop CC Keyboard Shortcuts
+
+_Posted on {site-date}_
 
 I was just searching for a list of all keyboard shortcuts in Photoshop CC. I found a few links which where either to old or I was not able to print them in a nice way in chrome/iron. So I searched further and found something pretty nice:
 

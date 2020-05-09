@@ -1,7 +1,8 @@
 :site-date: 20-09-2009
-:site-title: Umbau (vorerst) abgeschlossen
-:site-author: sid
-:site-tags: Bass
+
+== Umbau (vorerst) abgeschlossen
+
+_Posted on {site-date}_
 
 Erst mal muss ich sagen, dass mich entschlossen habe der Einfachheit halber auch Posts auf deutsch zu schreiben. Mein eigentliches anliegen ist allerdings hier meine Umbauarbeiten an meinem ersten Bass öffentlich zu machen ;)<!--more-->
 

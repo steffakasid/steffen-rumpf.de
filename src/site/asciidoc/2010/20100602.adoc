@@ -1,8 +1,9 @@
-:site-date: 02-06-2010
-:site-title: Me on myspace
-:site-author: sid
-:site-tags: Allgemein
 :source-highlighter: highlightjs
+:site-date: 02-06-2010
+
+== Me on myspace
+
+_Posted on {site-date}_
 
 Ich bin seit gestern auch auf myspace mit einem Musikerprofil vertreten kann ja nicht schaden ...
 

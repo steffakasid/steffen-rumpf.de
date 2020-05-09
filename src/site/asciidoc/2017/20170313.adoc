@@ -1,8 +1,9 @@
 :site-date: 13-03-2017
-:site-title: [Unsolved] Trying to create a akka-http server consuming multi-part messages
-:site-author: sid
-:site-tags: Allgemein, Java, PC-Krams, akka-http, NullPointerException
 :source-highlighter: highlightjs
+
+== [Unsolved] Trying to create a akka-http server consuming multi-part messages
+
+Posted on {site}
 
 I'm currently working on a akka-http server which should consume multi-part messages and send back on of those parts to the client. Currently I struggle a bit with the framework itself and especially lambdas as they're pretty new to me. Here is my current code:
 

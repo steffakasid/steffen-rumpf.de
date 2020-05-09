@@ -1,7 +1,8 @@
 :site-date: 25-11-2019
-:site-title: MacBook running with Ubuntu 18.04.3 LTS
-:site-author: sid
-:site-tags: PC-Krams
+
+== MacBook running with Ubuntu 18.04.3 LTS
+
+_Posted on {site-date}_
 
 Last weekend I spend some time to install Ubuntu 18.04.3 LTS on my Mid 2019 MacBook Pro. Unfortunately I already tested it with a USB live version and found out that everything seemed to work except wirless lan. So I just added a few more investigations to find out if it would be possible to get it working. What did I do:
 . I checked in `about this mac` which wlan Module is used and searched via google if there is a driver.

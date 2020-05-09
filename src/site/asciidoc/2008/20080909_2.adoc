@@ -1,9 +1,11 @@
-:site-date: 09-09-2008
-:site-title: ServiceMix :: FTP Component
-:site-author: sid
-:site-tags: ESB, Servicemix
 :source-highlighter: highlightjs
 :linkattrs:
+:site-date: 09-09-2008
+
+== ServiceMix :: FTP Component
+
+_Posted on {site-date}_
+
 
 So in the project I talked from in the post before we maybe want to use ServiceMix as something like an transfer/routing server. So I looked at the ftp component to be able to get data from servers which are not running on the same machine (now at todays point it seems like that the other servers will bring us the data, so we don't need ftp, but earlier this was not clear). So the basic configuration of an ftp component is easily done and you find enough documentation to get started. But I want to try the filter property which must be of the type "java.io.FileFilter" so this means we have to create/use an class which implements the FileFilter interface. But how can we add the class to our configuration and how we get maven to compile this class during packaging our component? Here is my solution its something like combining the ftp component with the bean component:
 
