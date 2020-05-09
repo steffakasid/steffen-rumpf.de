@@ -1,4 +1,4 @@
-body div.container {
+body > div.container {
     padding-bottom: 50px;
 }
 
@@ -71,7 +71,7 @@ div#breadcrumbs {
     margin-left:0px;
 }
 
-hr {
+body > hr {
     border-top: 0px;
     border-bottom: 0px;
     margin: 0px;
@@ -83,5 +83,4 @@ footer div {
 
 footer div.container div.row p {
     padding-top: 15px;
-    text-shadow: 2px 2px #7d7d7d;
 }
