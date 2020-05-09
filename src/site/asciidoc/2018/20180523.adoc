@@ -1,6 +1,6 @@
 :site-date: 23-05-2018
 
-= From wordpress to maven-site
+== From wordpress to maven-site
 
 _Posted on {site-date}_
 

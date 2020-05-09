@@ -23,8 +23,7 @@ Here are my main sources I used to set everything up:
 . link:https://askubuntu.com/questions/235533/how-to-set-keyboard-layout-for-a-macbook-pro[]
 . https://askubuntu.com/questions/131900/how-do-i-switch-the-command-key-and-control-key-on-a-macbook-pro[]
 +
-I did the following changes in `/usr/share/X11/xkb/symbols/pc
-` to switch the command and control key:
+I did the following changes in `/usr/share/X11/xkb/symbols/pc` to switch the command and control key:
 +
 [source,sh]
 ----
@@ -53,7 +52,7 @@ Afterwards run `sudo rm -rf /var/lib/xkb/*`
 == Update: 20.03.2020
 
 I had some issues the last month with freezes. But today I found something which could be the issue: https://askubuntu.com/questions/1185491/ubuntu-19-10-freezes-and-lags-reguarly
-I already ingreased my swap now and played around with swapiness. Right now I switched back to `vm.swapiness=60`. Let's see if it's getting better.
+I already ingreased my swap now and played around with swapiness. Right now I switched back to `vm.swapiness=60`. Let\'s see if it\'s getting better.
 
 == Update: 22.03.2020
 
