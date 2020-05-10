@@ -1,9 +1,9 @@
 :source-highlighter: highlightjs
-:site-date: 04-11-2010
+:post-date: 04-11-2010
 
 == Create multiline textbox with scrollbar in JavaFX
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 Currently I just played around with JavaFx. For the program I had build I had to use a multiline textbox with scrollbar. After some work here is the result:
 

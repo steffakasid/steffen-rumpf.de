@@ -1,8 +1,8 @@
-:site-date: 31-12-2016
+:post-date: 31-12-2016
 
 == Curves Presets for Lightroom
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 Today I created a few curves presets to be used in lightroom: 
 link:misc/2016/12/Curves.zip[Curves.zip^]

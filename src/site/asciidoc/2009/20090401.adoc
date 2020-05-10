@@ -1,8 +1,8 @@
-:site-date: 01-04-2009
+:post-date: 01-04-2009
 
 == My new and my old toy
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 Currently I play a lots of bass. So I've searched a new teacher and bought a new instrument which I want to present here:
 

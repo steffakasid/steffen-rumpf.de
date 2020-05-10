@@ -1,8 +1,8 @@
-:site-date: 06-11-2011
+:post-date: 06-11-2011
 
 == Got Android 2.3.7 on my X10 mini
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 Hey finally I got Android 2.3.7 working on my Sony Ericsson X10 mini. Which is currently not official supportet and I guess it will never be supported by Sony Ericsson. So I used a custom rom build by CyanogenMod (http://www.cyanogenmod.com). It was not such easy because there was no 1:1 howto and I had to search multiple howto's (programs and kernels as well) for each step. In the meantime I fleshed with a wrong kernel what leads to system freeze during bootup and was much trouble to flash it back, because it didn't let me into flash mode. So this post is also not a all in one howto but it lists all needed steps with corresponding links to the howto's for the details and hopefully it will help others to got it working easier then for me.
 

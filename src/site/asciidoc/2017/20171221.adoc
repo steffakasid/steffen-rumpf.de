@@ -1,9 +1,9 @@
-:site-date: 21-12-2017
+:post-date: 21-12-2017
 :source-highlighter: highlightjs
 
 == How-to create your own Certificate Authority (or the better way to get working snake oil certificates for internal use).
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 
 As I have a local owncloud installation I was searching how to create certificates which work well in Iron, Thunderbird and the owncloud client. Therefore basically I used: the how to which I found on link:https://niklas-rother.de/artikel/die-eigene-certificate-authority-ca/[].

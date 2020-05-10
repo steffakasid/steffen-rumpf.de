@@ -1,9 +1,9 @@
 :source-highlighter: highlightjs
-:site-date: 18-08-2010
+:post-date: 18-08-2010
 
 == Install busybox on Android
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 Da die meisten anderen Tutorials unvollständig waren, hab ich mir mal die Mühe gemacht, die vollständige Anleitung zu veröffentlichen.
 

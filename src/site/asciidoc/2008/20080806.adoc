@@ -1,8 +1,8 @@
-:site-date: 06-08-2008
+:post-date: 06-08-2008
 
 == Impressions from India
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 First time as we arrive in Kalkutta, my first thougth was: “what a huge sauna”, temperature at 28° and a humidity at ca. 80%. Now we had to wait for 7 or 8 hours for our domestic flight to Bhubaneshwar. The time we spend with talking and trinking tea… as we arrived in Bhubaneshwar one guy from the university tooks us up. From airport we drove to the hotel to fresh us up and change clothes. After that we drove to university to met the vice chancellor and some other professors. This takes about an hour or something like that. After that we met the students of the exchange program and started the Java courses. At lunch we was at the dining house of the university. What was not much more, then an dump, what is much different from so called “mensa” on german universities. In the evening we fall early in our bets because of the jet-lag.
 

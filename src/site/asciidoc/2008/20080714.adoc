@@ -1,8 +1,8 @@
-:site-date: 14-07-2008
+:post-date: 14-07-2008
 
 == My cousin is under the 'cap'...
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 … transfering german sayings into english roxx 🙂 Jear last weakend we (Kim, Rainer, Kerstin and me) were at the wedding of my cousin Anne. I think it was the loveliest wedding were I ever was invited (ok, that aren’t so much but I think for the coming weddings it will be hard to beat that). But let me start on the beginning.
 

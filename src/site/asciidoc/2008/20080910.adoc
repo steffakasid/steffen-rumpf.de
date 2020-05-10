@@ -1,8 +1,8 @@
-:site-date: 10-09-2008
+:post-date: 10-09-2008
 
 == Recommendations to read (Part 1)
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 First of all there is the new book from my mum. Its called 'Raubkind' and written in german. Here is the description of this book (currently only in german):
 

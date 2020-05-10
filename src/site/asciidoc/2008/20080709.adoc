@@ -1,8 +1,8 @@
-:site-date: 09-07-2008
+:post-date: 09-07-2008
 
 == What the fuck is an Enterprise Service Bus (ESB)
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 Today we’ve thought about an ESB. We started by decomposing the whole term of Enterprise Service Bus:
 

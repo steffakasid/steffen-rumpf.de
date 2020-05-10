@@ -1,8 +1,8 @@
-:site-date: 29-04-2016
+:post-date: 29-04-2016
 
 == OSB threading and local proxies
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 The last days I investigated a lot into the osb 11G (Oracle ESB) threading model during my work. I found a few quite nice articles about that topic but sadly they're mostly not really covering these topic together with local proxies (proxy with transport local or at least http proxies which are hosted on the same nodes). If you're not familar with threading in OSB I recomment to read those articles first because I base my assumptions and thoughts on those. My main sources are:
 

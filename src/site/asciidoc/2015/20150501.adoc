@@ -1,9 +1,9 @@
 :source-highlighter: highlightjs
-:site-date: 01-05-2015
+:post-date: 01-05-2015
 
 == GimpPython Plguin: Add all open Images as layer into one
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 I've just created a little script to make time stacking pictures easier. It just adds all open pictures into the current selected one.
 

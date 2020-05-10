@@ -1,8 +1,8 @@
-:site-date: 19-09-2009
+:post-date: 19-09-2009
 
 == Currently working as a Service Designer...
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 … for at last nearly a year now I am working in (I think) one of the biggest SOA projects in Germany. My task ist to design services. So for now I don’t have to code them. The main goal of this services is to make all services busines object modell (BOM) alligned and to provide process automation. For the design we use UML activity diagrams and we write a service-documentation in MS word which describe how to use this services…
 

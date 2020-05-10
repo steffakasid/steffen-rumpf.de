@@ -1,10 +1,10 @@
 :source-highlighter: highlightjs
 :linkattrs:
-:site-date: 05-07-2008
+:post-date: 05-07-2008
 
 == Working with maven and servicemix
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 During my evaluation of servicemix, creating artifacts with maven fucks up. Much commands which must be known or if not, you have to look at servicemix FAQs and so on. So I eased up the use by creating a little shell script which allows me to create  project directorys, ServiceUnits and ServiceAssemblies. To use the script you need Maven2.x (I've used version 2.0.8) because the script encapsulates all maven commands which are needed to do create the named units. So here it is:
 

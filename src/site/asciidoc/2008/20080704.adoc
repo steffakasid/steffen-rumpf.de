@@ -1,7 +1,7 @@
-:site-date: 04-07-2008
+:post-date: 04-07-2008
 
 == Created my own blog
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 After playing around with some custom written webpages (by myself) and testin some content management systems (CMS) I desided to create a blog. First hit I get searchin an open source blog by google was WordPress… so here it is. Easy to install, easy to use, more I don’t need x) Maybe I will do a little bit customization, create my own theme and so on… we will see and may be I will write some bloggings down here so everyone can read what I’am doing xD

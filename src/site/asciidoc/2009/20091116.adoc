@@ -1,8 +1,8 @@
-:site-date: 16-11-2009
+:post-date: 16-11-2009
 
 == Schweinegrippe
 
-_Posted on {site-date}_
+_Posted on {post-date}_
 
 &#8230; werden die ganzen Schweine eigentlich auch geimpft? Sonst frag ich mich nur wie die Impfaktion überhaupt die "Pandemie" eindämmen soll... meiner Meinung nach die unsinnigste Aktion überhaupt :)
 
