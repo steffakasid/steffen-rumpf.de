@@ -1,0 +1,80 @@
+---
+title: "MacBook running with Ubuntu 18.04.3 LTS"
+date: 2019-11-25T08:47:11+01:00
+draft: false
+---
+
+== MacBook running with Ubuntu 18.04.3 LTS
+
+Last weekend I spend some time to install Ubuntu 18.04.3 LTS on my Mid 2019 MacBook Pro. Unfortunately I already tested it with a USB live version and found out that everything seemed to work except wirless lan. So I just added a few more investigations to find out if it would be possible to get it working. What did I do:
+. I checked in `about this mac` which wlan Module is used and searched via google if there is a driver.
+. I found out that there is a driver and just tried it via USB live version of Ubuntu what directly worked.
+
+Here are my main sources I used to set everything up:
+
+=== Wireless Lan Driver
+
+. link:https://wireless.wiki.kernel.org/en/users/drivers/b43[]
+. link:https://help.ubuntu.com/community/WifiDocs/Driver/bcm43xx[]
+. link:https://askubuntu.com/questions/55868/installing-broadcom-wireless-drivers[]
+. link:https://packages.ubuntu.com/bionic/bcmwl-kernel-source[]
+
+=== Keyboard Layout
+
+. link:https://askubuntu.com/questions/235533/how-to-set-keyboard-layout-for-a-macbook-pro[]
+. https://askubuntu.com/questions/131900/how-do-i-switch-the-command-key-and-control-key-on-a-macbook-pro[]
++
+I did the following changes in `/usr/share/X11/xkb/symbols/pc` to switch the command and control key:
++
+[source,sh]
+----
+{{< highlight go "linenos=true" >}}
+key <LCTL> {    [ Super_L       ]   };
+key <LWIN> {    [ Control_L     ]   };
+
+...
+
+key <RCTL> {    [ Super_R       ]   };
+key <RWIN> {    [ Control_R     ]   };
+{{< / highlight >}}
+----
++
+Afterwards run `sudo rm -rf /var/lib/xkb/*`
++
+. link:https://askubuntu.com/questions/78769/how-can-i-set-up-a-keyboard-shortcut-so-that-ctrlbackspace-del/144568[]
+. link:http://www.ubuntu-forum.de/artikel/37562/ubuntu-tastatur-problem-macbook-eckige-geschweifte-klamern-und-die-tilde.html[]
+
+=== Theming
+. link:https://www.omgubuntu.co.uk/2017/03/make-ubuntu-look-like-mac-5-steps[]
+. link:https://github.com/keeferrourke/la-capitaine-icon-theme/releases[]
+
+=== Multitouch Gestures
+. link:https://github.com/iberianpig/fusuma/blob/master/README.md[]
+. https://github.com/iberianpig/fusuma-plugin-wmctrl
+
+== Update: 20.03.2020
+
+I had some issues the last month with freezes. But today I found something which could be the issue: https://askubuntu.com/questions/1185491/ubuntu-19-10-freezes-and-lags-reguarly
+I already ingreased my swap now and played around with swapiness. Right now I switched back to `vm.swapiness=60`. Let\'s see if it\'s getting better.
+
+== Update: 22.03.2020
+
+That wasn\'t enough. But it seems I found it now: The problem was the video driver. I now switched to the nvidia driver: 
+
+[source,sh]
+----
+{{< highlight go "linenos=true" >}}
+sudo apt-get purge nvidia*
+sudo apt install nvidia-331
+{{< / highlight >}}
+----
+
+I now have sometimes some little flickering but not that much. Maybe I\'ll find out why this happens. Right now I don\'t have any freezes anymore.
+
+== Update: 03.05.2020
+
+I switched now to Ubuntu 20.04 LTS everything works fine.
+
+== Update: 03.05.2020 (2)
+
+For VSCode I found a Keymap to get Mac Shortcuts on Linux: https://marketplace.visualstudio.com/items?itemName=fredhappyface.mackeybindings

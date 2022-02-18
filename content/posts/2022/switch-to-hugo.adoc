@@ -1,0 +1,9 @@
+---
+title: "Switch to gohugo and Ionos deploy now"
+date: 2022-02-18T16:26:11+01:00
+draft: false
+---
+
+== Switch to gohugo and Ionos deploy now
+
+Today I swichted this website from my custom maven plugin to use link:https://gohugo.io[gohugo] (with asciidoctor) to build the page and deploy it to link:https://www.ionos.de/hosting/deploy-now[Ionos deploy now]. This was quite easy to acomplish and I really like the outcome.

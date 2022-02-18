@@ -1,0 +1,11 @@
+---
+title: "Photoshop CC Keyboard Shortcuts"
+date: 2017-02-12T08:47:11+01:00
+draft: false
+---
+
+== Photoshop CC Keyboard Shortcuts
+
+I was just searching for a list of all keyboard shortcuts in Photoshop CC. I found a few links which where either to old or I was not able to print them in a nice way in chrome/iron. So I searched further and found something pretty nice:
+
+In Photoshop CC itself you could just go to the edit/bearbeiten menu and there is an entry called shortcuts/Tastaturbefehle (Alt+Umschalt+STRG+k). From there you can export all currently defined shortcuts into a .htm file.

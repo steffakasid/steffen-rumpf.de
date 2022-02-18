@@ -1,0 +1,28 @@
+---
+title: "Customized my Blog"
+date: 2008-07-05T08:47:11+01:00
+draft: false
+---
+
+== Customized my Blog
+
+As you can see, I've customized my blog and created my own theme… which is not finished at all, but for the first time it will fit my requirements. Also I've added a plugin which enables the blog to highlight source code from different programming languages. This plugin is called wp-syntax. Here are some examples:
+First of all PHP:
+
+[source,php]
+----
+<?php
+function hello($strName) {
+   echo "Hello $strName";
+}
+?>
+----
+
+And a second example with a unix shell script:
+
+[source,SH]  
+---- 
+#!/bin/sh
+var='Hello World!'
+echo $var
+----

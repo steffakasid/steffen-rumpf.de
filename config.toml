@@ -1,0 +1,104 @@
+baseURL = 'http://steffen-rumpf.de/'
+languageCode = 'de-de'
+title = 'steffakasid - the one and only'
+theme = 'hugo-coder'
+
+paginate = 20
+pygmentsStyle = "dracula"
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+enableEmoji = true
+# Enable Disqus comments
+# disqusShortname = "yourdiscussshortname"
+
+[security]
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
+
+[params]
+author = "Steffen Rumpf"
+license = '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA-4.0</a>'
+description = "steffakasid - the one and only"
+keywords = "blog,developer,personal"
+info = ["DevOps Engineer", "Photographer"]
+avatarURL = "images/avatar.jpg"
+#gravatar = "john.doe@example.com"
+dateFormat = "January 2, 2006"
+since = 2022
+# Right To Left, shift content direction for languagues such as Arabic
+rtl = false
+# Specify light/dark colorscheme
+# Supported values:
+# "auto" (use preference set by browser)
+# "dark" (dark background, light foreground)
+# "light" (light background, dark foreground) (default)
+colorScheme = "dark"
+# Hide the toggle button, along with the associated vertical divider
+hideColorSchemeToggle = false
+# Series see also post count
+maxSeeAlsoItems = 5
+# Custom CSS
+customCSS = []
+# Custom SCSS, file path is relative to Hugo's asset folder (default: {your project root}/assets)
+customSCSS = []
+# Custom JS
+customJS = []
+
+[permalinks]
+  posts = '/:year/:month/:title/'
+
+[taxonomies]
+category = "categories"
+series = "series"
+tag = "tags"
+author = "authors"
+
+[[params.social]]
+name = "Github"
+icon = "fa fa-2x fa-github"
+weight = 1
+url = "https://github.com/steffakasid/"
+
+[[params.social]]
+name = "500px"
+icon = "fa fa-2x fa-500px"
+weight = 2
+url = "https://500px.com/steffakasid/"
+
+[[params.social]]
+name = "Twitter"
+icon = "fa fa-2x fa-twitter"
+weight = 3
+url = "https://twitter.com/steffakasid/"
+
+[[params.social]]
+name = "LinkedIn"
+icon = "fa fa-2x fa-linkedin"
+weight = 4
+url = "https://www.linkedin.com/in/steffen-rumpf-1589b1a4/"
+
+[[params.social]]
+name = "RSS"
+icon = "fa fa-2x fa-rss"
+weight = 6
+url = "https://steffen-rumpf.de/index.xml"
+rel = "alternate"
+type = "application/rss+xml"
+
+[languages.en]
+languageName = ":uk:"
+
+[[languages.en.menu.main]]
+name = "Blog"
+weight = 2
+url = "posts/"
+
+[[languages.en.menu.main]]
+name = "Projects"
+weight = 3
+url = "projects/"
+
+[[languages.en.menu.main]]
+name = "Impressum"
+weight = 5
+url = "impressum/"

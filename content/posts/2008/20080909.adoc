@@ -1,0 +1,66 @@
+---
+title: "Working with Smooks"
+date: 2008-09-09T12:47:11+01:00
+draft: false
+---
+
+:linkattrs:
+
+== Working with Smooks
+
+Currently I'am workin in a project in Dresden. My part is placed in the ETL (Extract Transform Load) process and I have to do the transform part. So we have to transform XML and CSV files. Some of this files are about 200 Mbyte and we have decided to use Smooks ([HIER DER LINK]). Smooks is a framework to analyse or transform data (not only XML).
+To handle a transformation with Smooks you have to create a configuration file in XML. On the project side you can find lots of basic examples which are very useful to get started. What I missed where some more complex mapping examples for the XML-to-Java conversion. So I've desided to create one. Basic mapping of XML is not very hard. But my problem was that I had to map elements with the same name which are placed under subelements. Here is an sample XML file:
+
+[source,XML]
+----
+{{< highlight go "linenos=true" >}}
+<xml version=“1.0“>	 	 
+<configuration>	 	 
+ <modules>	 	 
+ <module name=“...“>	 	 
+ <language>...</language>	 	 
+ <save-path>...</save-path>	 	 
+ <custom-settings>	 	 
+ <setting name=“...“ value=“...“/>	 	  	 
+ ...
+ </custom-settings>	 	 
+ <submodules>	 	 
+ <submodule>	 	 
+ <modulepath>...</modulepath>	 	 
+ <custom-settings>	 	 
+ <setting name=“...“ value=“...“/>	 	 
+ ...
+ </custom-settings>	 	 
+ <submodule>	 	 
+ </submodules>	 	 
+
+ 	 	 ...
+ </module>	 	 
+ 	 	 ...
+</modules>	 	 
+</configuration>
+{{< / highlight >}}
+----
+
+So what you see are the two cusomsettings tags which can be described via different pathes:
+
+. /configuration/modules/module/custom-settings/setting
+. /configuration/modules/module/submodules/submodule/customsettings/setting
+
+To access a tag in Smooks you have to configure the selector attribute [BEISPIEL] for unique accessable tags this is no problem you only have to use the name. But what do we have to do if we want to access a not unique tag like in the example above? On the project page you find some information, that you can access elements in a XPath or CSS like way. So I tried it out only in the selector of the ressource-config tag. But this doesen't works. My thoughts where that this element defines what to select and the inner element only selects inside of whats already selected. But this is wrong. You have to configure all selector tags:
+
+[source,XML]
+----
+{{< highlight go "linenos=true" >}}
+<ressource-config selector=“submodule/custom-settings/settings“>	 	 
+ ...	 	 ...
+ <param name=“bindings“>	 	 
+ <binding property=“@name“ selector=“submodule/custom-settings/setting/@value/>	 	 
+ 	 	 
+ </param>	 	 
+</ressource-config>
+{{< / highlight >}}
+----
+
+*Project-site*
+link:http://milyn.codehaus.org/Smooks[http://milyn.codehaus.org/Smooks, window="_blank"]

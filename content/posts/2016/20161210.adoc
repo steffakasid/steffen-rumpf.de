@@ -1,0 +1,35 @@
+---
+title: "Groovy, XML and Namespaces"
+date: 2016-12-10T08:47:11+01:00
+draft: false
+---
+
+== Groovy, XML and Namespaces
+
+I just had to work with Groovy (creating a Pipeline in Jenkins V2) where we needed to handle XML documents. In fact we were reading the documents from disk but just to keep that little example easy I skip this and just create a text variable which includes the XML fracment. What I want to show is how to use the XMLParser together with a XML document which uses namespaces. The sample I'm using is from http://groovy-lang.org/processing-xml.html. I've just added some namespaces. Just node the difference regarding the namespace definitions in line 9 + 10 and take a look on the different style of the GPath statements in line 15.
+
+[source,java,linenums]
+----
+{{< highlight go "linenos=true" >}}
+def text = '''<!?xml version="1.0" encoding="UTF-8"?>
+<rootElement xmlns:n1="http://steffen-rumpf.de/groovy/ns1"
+ xmlns:n2="http://steffen-rumpf.de/groovy/ns2">
+<n1:technology>
+  <n2:name>
+      Groovy
+  </n2:name>
+</n1:technology>
+</rootElement>
+'''
+
+def n1 = new groovy.xml.Namespace("http://steffen-rumpf.de/groovy/ns1", 'n1')
+def n2 = new groovy.xml.Namespace("http://steffen-rumpf.de/groovy/ns2", 'n2')
+
+def list = new XmlParser().parseText(text)
+
+assert list instanceof groovy.util.Node
+assert list[n1.technology][n2.name].text() == 'Groovy'
+
+println 'Content of name is: '+list[n1.technology][n2.name].text()
+{{< / highlight >}}
+----

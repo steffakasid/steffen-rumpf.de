@@ -1,0 +1,75 @@
+// curl https://api.github.com/users/steffakasid/repos | yq '.[] | [{"name": .name, "description": .description, "url": .svn_url}]'
+== My GitHub Projects
+
+=== Active
+
+==== link:https://github.com/steffakasid/aspect-ratio-filter.lrplugin"[aspect-ratio-filter.lrplugin]
+
+
+This project is a Lightroom Plugin written in Lua. It can be used to add aspect rations (e.g. 4:3, 3:4 etc.) to all fotos in the library. This is useful as Lightroom itself doesn't publish those values in a readable form. And it can be useful to filter images for project like calendars etc.
+
+==== link:https://github.com/steffakasid/autohotkey-windows-mac-keyboard[autohotkey-windows-mac-keyboard]
+
+As I like to have the same keyboard layout on all machines. I created a keyboard layout for Windows to be able to use the MacLayout there. It uses link:https://www.autohotkey.com/[autohotkey] to be able to manipulate all keys. Also the basic mac layout already were applied within my Logitech multi-device k850 Keyboard.
+
+==== link:https://github.com/steffakasid/clinar[clinar]
+
+A simple tool to delete stale GitLab runners. Written in Golang. Can be installed via `brew`.
+
+==== link:https://github.com/steffakasid/ChromeTheme[ChromeTheme]
+
+My custom Chrome theme.
+
+==== link:https://github.com/steffakasid/co2-ampel[co2-ampel]
+
+My CO2 trafficlight born during the Covid pandemic. It uses a tiny d1-mini board, CO2 sensor, ring light and OLED display.
+
+==== link:https://github.com/steffakasid/covid[covid]
+
+Another tool created during the Covid pandemic. It can download the raw RKI data for Germany and print it in a sumarized form as table.
+
+==== link:https://github.com/steffakasid/dof[dof]
+
+A little tool manage ma DOt Files via a GIT bare repo. Basically it just wraps the GIT commands to do so.
+
+==== link:https://github.com/steffakasid/go-rest-api[go-rest-api]
+
+When this project was born we used JS express to implement APIs at work. So I wanted to see if all feature we would need would be implementable with go. Somehow in a similar fassion.
+
+==== link:https://github.com/steffakasid/grd[grd]
+
+grd - GitLab rename default branches. Written in Golang.
+
+==== link:https://github.com/steffakasid/kusto-me[kusto-me]
+
+kusto-me stands for kustomize me. It can be used to initalize a link:https://kustomize.io/[kustomize] projekt e.g. if you already hae a lot of k8s resources you don't want to maniually add to your kustomize.yaml. Written in Golang. Can be installed via brew.
+
+==== link:https://github.com/steffakasid/my-dot-files[my-dot-files]
+
+Just my personal dot files as I use them on my private machine.
+
+==== link:https://github.com/steffakasid/steffen-rumpf.de[steffen-rumpf.de]
+
+This is just the source of this webpage. Created using link:https://gohugo.io/[hugo].
+
+==== link:https://github.com/steffakasid/trivyops[trivyops]
+
+A little tool which can be used to retreive the state of all GitLab project GitLab-CI instances trivy scanner job results. The tool just checks the last run on the default branch to identify if there was a trivy scan, if was successful and if it found somethings. Also it prints out if the project has a .trivyignore file and prints out ignored CVE's. We use this in our daily work to Scan about 100 GitLab project and keep track of trivy findings. Can be installed via brew.
+
+==== link:https://github.com/steffakasid/ps-cc-four-in-one[ps-cc-four-in-one]
+
+I wanted to print 100rds of mini pictures. As I didn't find any manufactured I created this JavaScript Photoshop plugin which can arrange 100rds of pictures into multiple new pictures which take 4 pictures which can then be printed at a large scale and cut out later.
+
+==== link:https://github.com/steffakasid/ts-rest-api[ts-rest-api]
+
+Same intention as for the go-rest-api project. Just with typescript. In fact until now we're shifting all our previously plan JavaScript express APIs to Typescript. Even if I personally would prefer Golang.
+
+=== Archived
+
+==== link:https://github.com/steffakasid/asciidoc-blog-maven-plugin[asciidoc-blog-maven-plugin]
+
+This was previously used to generate this side. Basically I build the previous side with the maven-site-plugin. But this plugin wasn't able to render asciidoc. Therefore I created this plugin.
+
+==== link:https://github.com/steffakasid/ymlate[ymlate]
+
+This was a learner project and I was searching for tool to extend and render yaml in a helm like way. Later I found link:https://gomplate.ca/[gomplate] for this job which does a really nice job even if it is more complex to use. So I decided to archive this project. Written in Golang.

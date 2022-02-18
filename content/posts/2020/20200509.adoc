@@ -1,0 +1,9 @@
+---
+title: "Updated asciidoc-template-maven plugin"
+date: 2020-05-09T08:47:11+01:00
+draft: false
+---
+
+== Updated asciidoc-template-maven plugin
+
+I\'ve updated the plugin I use to generate the site. It now dosesn\'t require a extra yaml file to define the blog posts. The Asciidoc files just need to define the `:post-date:` Asciidoc attribute and the plugin will just do the ordering and creation of paging links.

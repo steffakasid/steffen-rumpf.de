@@ -1,0 +1,9 @@
+---
+title: "JMS vs. Kafka"
+date: 2016-07-19T08:47:11+01:00
+draft: false
+---
+
+== JMS vs. Kafka
+
+Last weekend I create a small Java comparison test (yes it was a bit unfair) between Apache Kafka, Oracle Weblogic and WS02 MessageBroker. What I basically did was to create simple clients for all three products (basically a Kafka client and JMS client which was used for Oracle and WS02) and I installed all products with basic configuration (as they can be downloaded). Ok for Weblogic I extended the heap to 2048Mb and used a G1 GC as it was configured with the lowest amount when shipped out. The testclient was pretty simple basically a thread which send always the same message (String “Hello World” attached with an incremented number) to the messaging product. This thread always run 60s and then stopped the test. As expected Apache Kafka ruled the others with a bit more then 75 Mio messages send and stored in a minute. WS02 scored second with at about 1 Mio messages and Oracle Weblogic at the end with a bit more then 100k messages. That was really interesting to see. Especially the huge difference between those two JMS implementations. Would be quite interesting why this difference is that huge. I may check the different default configurations and try to align them. Maybe I'll also extend the test and run it on clusters of the products…
