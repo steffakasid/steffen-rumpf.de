@@ -2,39 +2,20 @@
 
 ## Introduction
 
-This project defines my webpage as maven-site project. I decided to use asciidoc because of the most flexibility in formatting (see pom.xml file how asciidoc can be used within maven-site).  Additionally this project uses a maven plugin I've creaetd in order to be able to have multiple 'blog post files' which are included into the side.
+This project defines my webpage as link:gohugo.io[gohugo] project. I decided to use asciidoc because of the most flexibility in formatting.
 
-## Usage
+Previously this page was build using the maven-site plugin with a custom maven plugin written by myself which allowed to create a blog. But as found out that hugo is much more powerful I decided to switch. Also I publish now with Ionos deploy-now which supports hugo out-of-the-box.
 
-- To build the site run the:
+## How to create GitHub projects page
 
-    ```sh
-    mvn clean generate-sources pre-site site:site
-    ```
+In order to list all my GitHub projects. I used the following command to retreive all public projects from GitHub and strip out only a few fields using yq:
 
-- To deploy the site to the remote server using `<distributionManagement>` run:
-
-    ```sh
-    mvn clean generate-sources pre-site site:site site:deploy
-    ```
-    **Note:** The distributionManagement in the pom.xml uses key based authentication. Therefore I don't have to give a password here.
-
-## Licence information
-
-This project uses highlight js default.min.css which is under licence by:
-
-```text
-Copyright (c) 2006, Ivan Sagalaev
-All rights reserved.
-```
-
-See the included licence file under `src/site/resources/css`
-
-## Get all GitHub Projects
-
+[source,sh]
+----
 curl https://api.github.com/users/steffakasid/repos | yq '.[] | [{"name": .name, "description": .description, "url": .svn_url}]'
-
+----
 ## Further reading
 
-- https://maven.apache.org/plugins/maven-site-plugin/usage.html
+- https://gohugo.io
+- https://www.ionos.de/hosting/deploy-now
 - https://asciidoctor.org/
