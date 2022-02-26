@@ -1,5 +1,5 @@
 ---
-title: "Switch to gohugo and Ionos deploy now"
+title: "Speed up trivyops using Go routines"
 date: 2022-02-26T11:41:11+01:00
 draft: false
 ---
