@@ -30,6 +30,10 @@ All rights reserved.
 
 See the included licence file under `src/site/resources/css`
 
+## Get all GitHub Projects
+
+curl https://api.github.com/users/steffakasid/repos | yq '.[] | [{"name": .name, "description": .description, "url": .svn_url}]'
+
 ## Further reading
 
 - https://maven.apache.org/plugins/maven-site-plugin/usage.html
