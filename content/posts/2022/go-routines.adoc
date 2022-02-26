@@ -12,7 +12,7 @@ After playing around a bit with some tutorial projects like multiplying some num
 
 The most important part I had to learn is the blocking / non-blocking mechanism of Go routines. So I want to explain how that works. Basically the idea of Go routines is, that they are blocking if there is no other way to turn in your code. If there other ways possible. Go routines are not blocking.
 
-The following will not work as both operations read & write are blocking. You'll get the error `fatal error: all goroutines are asleep - deadlock!` if you don something like that.
+The following will not work as both operations read & write are blocking. You'll get the error `fatal error: all goroutines are asleep - deadlock!` if you do something like that.
 
 .Not working example
 [source,go]
@@ -39,6 +39,7 @@ fmt.Println(<-myChan)
 ----
 
 The same example non-blocking. This will print out `Nothing received` as the read is now non-blocking. So the program directly continues and doesn't wait until something was sent to the channel.
+
 .Non-blocking eample
 [source,go]
 ----
