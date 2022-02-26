@@ -1,0 +1,112 @@
+---
+title: "Switch to gohugo and Ionos deploy now"
+date: 2022-02-26T11:41:11+01:00
+draft: false
+---
+
+== Speed up trivyops using Go routines
+
+As I have a project on GitHub (trivyops) which is able to scan multiple (depending on your work 100rds of) GitLab projects for pipelines with trivy results. I thought about how I could speed trivyops up to do it's job faster and also I was searching for a example were I could try out Go routines and channels.
+
+After playing around a bit with some tutorial projects like multiplying some numbers using Go routines and channels. I pretty fast came up that channels can to more then just transporting simple numbers and that they can also be used with structs. Based on that I refactored trivyops to basically use Go routines to do the API Calls (multiple one in parallel) and retrieve the results via channels. Doing that I was able to reduce the runtime of trivyops for my projects (at about 100 projects to be scanned) from 1.40 minutes to at about 9s :).
+
+The most important part I had to learn is the blocking / non-blocking mechanism of Go routines. So I want to explain how that works. Basically the idea of Go routines is, that they are blocking if there is no other way to turn in your code. If there other ways possible. Go routines are not blocking.
+
+The following will not work as both operations read & write are blocking. You'll get the error `fatal error: all goroutines are asleep - deadlock!` if you don something like that.
+
+.Not working example
+[source,go]
+----
+myChan := make(chan int)
+myChan <- 1
+fmt.Println(<-myChan)
+----
+
+The same snippet with go routine works. the line `fmt.Println(<-myChan)` will block the execution until something was send to the channel.
+
+.Blocking example
+[source,go]
+----
+myChan := make(chan int)
+go go func() {
+    myChan <- i
+}()
+fmt.Println(<-myChan)
+----
+
+The same example non-blocking. This will print out `Nothing received` as the read is now non-blocking. So the program directly continues and doesn't wait until something was sent to the channel.
+.Non-blocking eample
+[source,go]
+----
+myChan := make(chan int)
+go go func() {
+    myChan <- i
+}()
+
+select {
+case x := <-myChan:
+    fmt.Println(x)
+default:
+    fmt.Println("Nothing received")
+}
+----
+
+The 2nd thing was how to avoid deadlocks when reading channels in loops. Intressting to see is the writeChan method as it now uses non-blocking send: As the for loop can continue wihout the reading from the channel it will not block. The program will then print out all values from 0...9 and then prints out the error `fatal error: all goroutines are asleep - deadlock!`
+
+.Another deadlock example
+[source,go]
+----
+myChan := make(chan int)
+go go func() {
+    for i := 0; i < 10; i++ {
+        myChan <- i
+    }
+}()
+for j := range myChan {
+    fmt.Println(j)
+}
+----
+
+The deadlock error can be resolved using a waitgroup and then close the channel if all waitgroups are done. This is shown in the next snippet. Note that the channel now is buffered otherwise for this example it would block and I would again have a deadlock.
+
+.Solve the deadlock using waitgroup
+[source,go]
+----
+var wg sync.WaitGroup
+myChan := make(chan int, 10)
+wg.Add(1)
+go go func() {
+    for i := 0; i < 10; i++ {
+        myChan <- i
+    }
+    wg.Done()
+}()
+wg.Wait()
+close(myChan)
+for j := range myChan {
+    fmt.Println(j)
+}
+----
+
+We can also write it without buffered channel but then we need another goroutine.
+
+.Solve deadlock without buffered channel
+[source,sh]
+----
+var wg sync.WaitGroup
+myChan := make(chan int)
+wg.Add(1)
+go func() {
+    for i := 0; i < 10; i++ {
+        myChan <- i
+    }
+    wg.Done()
+}()
+go func() {
+    for j := range myChan {
+        fmt.Println(j)
+    }
+}()
+wg.Wait()
+close(myChan)
+----
