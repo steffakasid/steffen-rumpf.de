@@ -18,10 +18,9 @@ Previously this page was build using the maven-site plugin with a custom maven p
 
 In order to list all my GitHub projects. I used the following command to retreive all public projects from GitHub and strip out only a few fields using yq:
 
-[source,sh]
-----
+```
 curl https://api.github.com/users/steffakasid/repos | yq '.[] | [{"name": .name, "description": .description, "url": .svn_url}]'
-----
+```
 ## Further reading
 
 - https://gohugo.io
