@@ -23,6 +23,7 @@ myChan <- 1
 fmt.Println(<-myChan)
 {{< / highlight >}}
 ----
+https://play.golang.com/p/ovFblVaHh9J
 
 The same snippet with go routine works. the line `fmt.Println(<-myChan)` will block the execution until something was send to the channel.
 
@@ -31,12 +32,13 @@ The same snippet with go routine works. the line `fmt.Println(<-myChan)` will bl
 ----
 {{< highlight go "linenos=true" >}}
 myChan := make(chan int)
-go go func() {
-    myChan <- i
+go func() {
+    myChan <- 1
 }()
 fmt.Println(<-myChan)
 {{< / highlight >}}
 ----
+https://play.golang.com/p/FFAd-7Z_Nnd
 
 The same example non-blocking. This will print out `Nothing received` as the read is now non-blocking. So the program directly continues and doesn't wait until something was sent to the channel.
 
@@ -45,8 +47,8 @@ The same example non-blocking. This will print out `Nothing received` as the rea
 ----
 {{< highlight go "linenos=true" >}}
 myChan := make(chan int)
-go go func() {
-    myChan <- i
+go func() {
+    myChan <- 1
 }()
 
 select {
@@ -57,6 +59,7 @@ default:
 }
 {{< / highlight >}}
 ----
+https://play.golang.com/p/N2U5bCxaMMi
 
 The 2nd thing was how to avoid deadlocks when reading channels in loops. Intressting to see is the writeChan method as it now uses non-blocking send: As the for loop can continue wihout the reading from the channel it will not block. The program will then print out all values from 0...9 and then prints out the error `fatal error: all goroutines are asleep - deadlock!`
 
@@ -65,7 +68,7 @@ The 2nd thing was how to avoid deadlocks when reading channels in loops. Intress
 ----
 {{< highlight go "linenos=true" >}}
 myChan := make(chan int)
-go go func() {
+go func() {
     for i := 0; i < 10; i++ {
         myChan <- i
     }
@@ -75,6 +78,7 @@ for j := range myChan {
 }
 {{< / highlight >}}
 ----
+https://play.golang.com/p/kXWuIwfS966
 
 The deadlock error can be resolved using a waitgroup and then close the channel if all waitgroups are done. This is shown in the next snippet. Note that the channel now is buffered otherwise for this example it would block and I would again have a deadlock.
 
@@ -85,7 +89,7 @@ The deadlock error can be resolved using a waitgroup and then close the channel 
 var wg sync.WaitGroup
 myChan := make(chan int, 10)
 wg.Add(1)
-go go func() {
+go func() {
     for i := 0; i < 10; i++ {
         myChan <- i
     }
@@ -98,11 +102,12 @@ for j := range myChan {
 }
 {{< / highlight >}}
 ----
+https://play.golang.com/p/gx4dq7EjJge
 
 We can also write it without buffered channel but then we need another goroutine.
 
 .Solve deadlock without buffered channel
-[source,sh]
+[source,go]
 ----
 {{< highlight go "linenos=true" >}}
 var wg sync.WaitGroup
@@ -123,3 +128,4 @@ wg.Wait()
 close(myChan)
 {{< / highlight >}}
 ----
+https://play.golang.com/p/i3JwlALahun
