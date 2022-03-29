@@ -1,0 +1,78 @@
+---
+title: "Setup and teardown unittests in golang"
+date: 2022-03-29T17:48:11+02:00
+draft: false
+---
+
+== Setup and teardown unittests in golang
+
+Right now we had a lot of discussions about golang in our team. My colleague Andreas complained about the unit testing especially setting them up and using teardown functions. I didn't add and problem with it until now, but he activated my mind and I searched for sultions for it. While searching I found link:https://medium.com/nerd-for-tech/setup-and-teardown-unit-test-in-go-bd6fa1b785cd[setup-and-teardown-unit-test-in-go] which brought me up to slidely different solution. Basically this is now what I found:
+
+I basically setup a link:https://github.com/steffakasid/go-unittest[simple project]. The code is just the following
+
+.main.go
+[source,sh]
+----
+{{< highlight go "linenos=true" >}}
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println(multiply(3, 3))
+}
+
+func multiply(number1, number2 int) int {
+	return number1 * number2
+}
+{{< / highlight >}}
+----
+
+Also I setup a simple test for it. The idea of the teardown is basically to create function which setups the tests and at the same time returns a function for the teardown. Then I can just register the handler via `t.Cleanup`.
+
+.main_test.go
+[source,golang]
+----
+{{< highlight go "linenos=true" >}}
+package main
+
+import (
+	"log"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
+
+func setupTest(t *testing.T) func() {
+	log.Println("Setup Test")
+	return func() {
+		log.Println("Teardown Test")
+	}
+}
+
+func TestMultiply(t *testing.T) {
+	t.Cleanup(setupTest(t))
+
+	log.Println("Testing now Multiply")
+	res := multiply(3, 3)
+	assert.Equal(t, 9, res)
+}
+{{< / highlight >}}
+----
+
+The output of this looks like:
+
+.go test
+[source,sh]
+----
+2022/03/29 17:54:18 Setup Test
+2022/03/29 17:54:18 Testing now Multiply
+2022/03/29 17:54:18 Teardown Test
+PASS
+ok      github.com/steffakasid/unittest 1.426s
+----
+
+I also like the other possibilities of testing.T to setup unittests:
+
+. link:https://pkg.go.dev/testing#T.Setenv[T.Setenv]
+. link:https://pkg.go.dev/testing#T.TempDir[T.TempDir]
