@@ -1,0 +1,81 @@
+---
+title: "Mocking and mock data generation"
+date: 2022-04-04T21:47:11+02:00
+draft: false
+---
+
+== Mocking and test data generation
+
+For mocking I like to use link:https://github.com/vektra/mockery[mockery] with link:https://pkg.go.dev/github.com/stretchr/testify/mock[testify/mock]. Generally the syntax is quite clear:
+
+.Example
+[source,golang]
+----
+mock.EXPECT().GetRunnerDetails(1).Return(nil, &gitlab.Response{}, errors.New("Something went wrong")).Once()
+----
+
+The most problems occur when it comes to multiple calls with different data. I was always search I to improve that without blowing up the testing code and making it unreadable. With one of my projects(link:https://github.com/steffakasid/clinar/blob/main/internal/clinar_test.go[clinar]) I now use data generation functions like the following:
+
+.Data Generation
+[source,golang]
+----
+func mockGetRunnerDetails(mock *mocks.GitLabClient, numOfCalls int) {
+	for i := 1; i <= numOfCalls; i++ {
+		details := &gitlab.RunnerDetails{
+			ID:   int(i),
+			Name: fmt.Sprintf("someRunner%d", i),
+			Projects: []struct {
+				ID                int    "json:\"id\""
+				Name              string "json:\"name\""
+				NameWithNamespace string "json:\"name_with_namespace\""
+				Path              string "json:\"path\""
+				PathWithNamespace string "json:\"path_with_namespace\""
+			}{
+				{
+					ID:   10 + i,
+					Name: fmt.Sprintf("Project%d", i),
+				},
+			},
+			Groups: []struct {
+				ID     int    "json:\"id\""
+				Name   string "json:\"name\""
+				WebURL string "json:\"web_url\""
+			}{
+				{
+					ID:   20 + i,
+					Name: fmt.Sprintf("Group%d", i),
+				},
+			},
+		}
+		mock.EXPECT().GetRunnerDetails(i).Return(details, &gitlab.Response{TotalItems: 1, TotalPages: 1}, nil).Once()
+	}
+}
+----
+
+With that I can easily setup multiple calls with different Return values. Which can also fail if necessary. It needs still some code to generate the data, but it doesn't blow up the test code. The basic testing code looks quite clear and is focused on the expectations of the tests. Here is an example how this can look like:
+
+.Unittest with data generation
+[source,golang]
+----
+t.Run("Simple case", func(t *testing.T) {
+    mock := &mocks.GitLabClient{}
+    logger, logHook := logrusTest.NewNullLogger()
+    mockDeleteRegisteredRunnerByID(mock, 5)
+    clinar := Clinar{Client: mock, Logger: logger}
+    clinar.CleanupRunners([]*gitlab.RunnerDetails{{ID: 1}, {ID: 2}, {ID: 3}, {ID: 4}, {ID: 5}})
+    mock.AssertExpectations(t)
+    assert.Len(t, logHook.Entries, 5)
+    assert.Contains(t, logHook.Entries[0].Message, "Deleting")
+    assert.Contains(t, logHook.Entries[1].Message, "Deleting")
+    assert.Contains(t, logHook.Entries[2].Message, "Deleting")
+    assert.Contains(t, logHook.Entries[3].Message, "Deleting")
+    assert.Contains(t, logHook.Entries[4].Message, "Deleting")
+    // Wait 50ms until goroutines are finished
+})
+----
+
+.Conclusion
+
+Using data generation functions works well with testify/mock and the code looks quite clean. The only thing which must be considered is that the mock must be defined within the test case (as shown above). Otherwise you could get unexpected behavior as the old expectation will be still present and match on your arguments. Also the AssertExpectations wil then fail.
+
+One note on logrus in unittests. My recommendation is to use a New If you want to assert on log entries using the logrus testing hook, you must use a new log instance. As this avoids getting strange results from the standard instance. Especially when working with multiple go routines.

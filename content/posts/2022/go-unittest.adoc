@@ -76,3 +76,22 @@ I also like the other possibilities of testing.T to setup unittests:
 
 . link:https://pkg.go.dev/testing#T.Setenv[T.Setenv]
 . link:https://pkg.go.dev/testing#T.TempDir[T.TempDir]
+
+=== UPDATE:
+
+Additional method not that elegant in my opinion but possible:
+
+[source,golang]
+----
+func TestSomething(t *testing.T) {
+    // Put setup code here
+
+    t.Run("Some Test", func(t *testing.T) {
+        // Tests goes here
+    })
+
+    // Teardown code here
+}
+----
+
+This can also be found link:https://pkg.go.dev/testing[here].
