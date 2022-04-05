@@ -79,10 +79,12 @@ I also like the other possibilities of testing.T to setup unittests:
 
 === UPDATE:
 
-Additional method not that elegant in my opinion but possible:
+I came up that there are multiple/ different ways on how to setup unittests. The mentioned Method above works pretty well on subtests using `t.Run` even if you could use this as well on any other test function which has an instance of `*testing.T`. Another approach to use setup and teardown code would be:
 
+.Simple test function setup and teardown
 [source,golang]
 ----
+{{< highlight go "linenos=true" >}}
 func TestSomething(t *testing.T) {
     // Put setup code here
 
@@ -92,6 +94,25 @@ func TestSomething(t *testing.T) {
 
     // Teardown code here
 }
+{{< / highlight >}}
 ----
+
+Or you can even setup your package tests using `func MainTest`:
+
+.MainTest
+[source,golang]
+----
+{{< highlight go "linenos=true" >}}
+func TestMain(m *testing.M) {
+    // Put setup code here
+
+    m.Run()
+
+    // Teardown code here
+}
+{{< / highlight >}}
+----
+
+TestMain will just trigger that the test functions are not called directly instead TestMain is executed. The call to m.Run() will then execute all test functions.
 
 This can also be found link:https://pkg.go.dev/testing[here].

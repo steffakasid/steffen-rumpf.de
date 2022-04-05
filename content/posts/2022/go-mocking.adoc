@@ -19,6 +19,7 @@ The most problems occur when it comes to multiple calls with different data. I w
 .Data Generation
 [source,golang]
 ----
+{{< highlight go "linenos=true" >}}
 func mockGetRunnerDetails(mock *mocks.GitLabClient, numOfCalls int) {
 	for i := 1; i <= numOfCalls; i++ {
 		details := &gitlab.RunnerDetails{
@@ -50,6 +51,7 @@ func mockGetRunnerDetails(mock *mocks.GitLabClient, numOfCalls int) {
 		mock.EXPECT().GetRunnerDetails(i).Return(details, &gitlab.Response{TotalItems: 1, TotalPages: 1}, nil).Once()
 	}
 }
+{{< / highlight >}}
 ----
 
 With that I can easily setup multiple calls with different Return values. Which can also fail if necessary. It needs still some code to generate the data, but it doesn't blow up the test code. The basic testing code looks quite clear and is focused on the expectations of the tests. Here is an example how this can look like:
@@ -57,6 +59,7 @@ With that I can easily setup multiple calls with different Return values. Which 
 .Unittest with data generation
 [source,golang]
 ----
+{{< highlight go "linenos=true" >}}
 t.Run("Simple case", func(t *testing.T) {
     mock := &mocks.GitLabClient{}
     logger, logHook := logrusTest.NewNullLogger()
@@ -72,6 +75,7 @@ t.Run("Simple case", func(t *testing.T) {
     assert.Contains(t, logHook.Entries[4].Message, "Deleting")
     // Wait 50ms until goroutines are finished
 })
+{{< / highlight >}}
 ----
 
 .Conclusion
