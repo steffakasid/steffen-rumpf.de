@@ -1,5 +1,8 @@
 # steffen-rumpf.de
 
+[<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg" height="20px"/>](http://creativecommons.org/licenses/by-sa/4.0/)
+[![Deploy Now](https://github.com/steffakasid/steffen-rumpf.de/actions/workflows/deploy-now.yaml/badge.svg)](https://github.com/steffakasid/steffen-rumpf.de/actions/workflows/deploy-now.yaml)
+
 ## Introduction
 
 This project defines my webpage as link:gohugo.io[gohugo] project. I decided to use asciidoc because of the most flexibility in formatting.
