@@ -1,0 +1,48 @@
+
+.colorscheme-light {
+    .admonitionblock {
+        td {
+            background-color: #212121;
+            color: white
+        }
+    }
+}
+
+.colorscheme-dark {
+    .admonitionblock {
+        td {
+            background-color: white;
+            color: #212121
+        }
+    }
+}
+
+.admonitionblock {
+
+    margin-bottom: 5rem;
+    
+    table {
+
+        td {
+            &:first-child {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+            }
+
+            &:last-child {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+        }
+        
+        td {
+            border: 0px !important;
+        }
+    }
+
+
+    .content {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
