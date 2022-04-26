@@ -3,8 +3,11 @@
 
 === Active
 
-==== link:https://github.com/steffakasid/aspect-ratio-filter.lrplugin"[aspect-ratio-filter.lrplugin]
+=== link:https://github.com/steffakasid/amiclean[amiclean]
 
+Small tool to cleanup older AMIs which are not used on AWS.
+
+==== link:https://github.com/steffakasid/aspect-ratio-filter.lrplugin"[aspect-ratio-filter.lrplugin]
 
 This project is a Lightroom Plugin written in Lua. It can be used to add aspect rations (e.g. 4:3, 3:4 etc.) to all fotos in the library. This is useful as Lightroom itself doesn't publish those values in a readable form. And it can be useful to filter images for project like calendars etc.
 
@@ -36,13 +39,21 @@ A little tool manage ma DOt Files via a GIT bare repo. Basically it just wraps t
 
 When this project was born we used JS express to implement APIs at work. So I wanted to see if all feature we would need would be implementable with go. Somehow in a similar fassion.
 
-==== link:https://github.com/steffakasid/grd[grd]
+==== link:https://github.com/steffakasid/go-unittest[go-unittest]
 
-grd - GitLab rename default branches. Written in Golang.
+This project just shows a few examples how to structure unittests in golang.
+
+==== link:https://github.com/steffakasid/jotty[jotty]
+
+I as searching for a small tool to parse and print a JWT token. Colleagues are using a Javascript/NPM tool but I don't like it. So here is my own. As JWTs are basically just base64 encoded strings. It just decodes the parts and print them out.
 
 ==== link:https://github.com/steffakasid/kusto-me[kusto-me]
 
 kusto-me stands for kustomize me. It can be used to initalize a link:https://kustomize.io/[kustomize] projekt e.g. if you already hae a lot of k8s resources you don't want to maniually add to your kustomize.yaml. Written in Golang. Can be installed via brew.
+
+==== link:https://github.com/steffakasid/lc[lc]
+
+I was searching for a tool to receive log data from AWS CloudWatch logs. As the golang AWS SDK is so simple. I just wrote my own tool which perfectly fits my needs.
 
 ==== link:https://github.com/steffakasid/my-dot-files[my-dot-files]
 
@@ -69,6 +80,10 @@ Same intention as for the go-rest-api project. Just with typescript. In fact unt
 ==== link:https://github.com/steffakasid/asciidoc-blog-maven-plugin[asciidoc-blog-maven-plugin]
 
 This was previously used to generate this side. Basically I build the previous side with the maven-site-plugin. But this plugin wasn't able to render asciidoc. Therefore I created this plugin.
+
+==== link:https://github.com/steffakasid/grd[grd]
+
+grd - GitLab rename default branches. Written in Golang.
 
 ==== link:https://github.com/steffakasid/ymlate[ymlate]
 
