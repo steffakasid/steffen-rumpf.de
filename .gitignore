@@ -100,3 +100,6 @@ Temporary Items
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
 generated_src
+
+public
+resources

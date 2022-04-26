@@ -1,0 +1,92 @@
+---
+title: "Switch microk8s to k3s"
+date: 2022-04-26T09:55:11+02:00
+draft: false
+---
+
+== Switch microk8s to k3s
+
+I recently switched my HP Proliant Microserver from mircok8s to k3s. 
+
+=== Why did I do it
+
+First of all I'm always interested into new stuff and somehow I found k3s mentioned on twitter and it sounded quite interesting. Second the performance of microk8s on my server was not that good e.g. sometimes when trying to access logs I got timeouts. So when I read about k3s and that it is designed to even run on Raspberries etc. that sounded like a good choice.
+
+=== How did I do it
+
+At the beginnging I just followed the instructions on link:https://dev.to/niveditacoder/steps-for-installing-k3s-on-ubuntu-2576[]. It's basically the standard way which is also mentioned on link:https://rancher.com/docs/k3s/latest/en/installation/install-options/[]. It just shows in addition how to be able to connect to the new cluster.
+
+.First try
+[source,sh]
+----
+{{< highlight sh "linenos=true" >}}
+curl -sfL https://get.k3s.io | sh -
+mkdir -p $HOME/.kube
+sudo cp /etc/rancher/k3s/k3s.* $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+{{< / highlight >}}
+----
+
+That's it. Cluster is up an running. I executed my helmfile and most of the stuff was just working fine. But I had a few small issues:
+
+. k3s uses flannel and traefik both are maybe a good choice but I'm not familar with them
+. I have a daemonset which allows me to access my nextcloud instance via HostIP has on mobile phones (regardless if Android or Iphone) it's not easy to manipulate /etc/hosts. But the hostPort wasn't mapped with flannel and I didn't find out how to solve it.
+
+Traefik I already deleted directly after the fist installation and switched to nginx ingress. As my installation was already based on it. So with the issues I had I also decided to switch flannel with Calico. The same as when setting up Calico on AWS EKS I found the documentation for Calico pretty good: link:https://projectcalico.docs.tigera.io/getting-started/kubernetes/k3s/quickstart[]
+
+NOTE: You must uninstall (guess at least you need to restart it) k3s before doing so (as always when switching CNI as that manipulates the whole IP stack of the nodes).
+
+.Second try
+[source,sh]
+----
+{{< highlight sh "linenos=true" >}}
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--flannel-backend=none --cluster-cidr=192.168.0.0/16 --disable-network-policy --disable=traefik" sh -
+kubectl create -f https://projectcalico.docs.tigera.io/manifests/tigera-operator.yaml
+kubectl create -f https://projectcalico.docs.tigera.io/manifests/custom-resources.yaml
+mkdir -p $HOME/.kube
+sudo cp /etc/rancher/k3s/k3s.* $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+{{< / highlight >}}
+----
+
+I connected to the cluster, but the `svclb-ingress-nginx-controller` didn't came up. I just asked Google and it came out that doesn't allow container ip forwarding which is necessary to run the `klipper-lb`. So I hat to manipulate the `custom-resource.yaml` applied above:
+
+.custom-resource.yaml
+[source,yaml]
+----
+{{< highlight yaml "linenos=true" >}}
+# This section includes base Calico installation configuration.
+# For more information, see: https://projectcalico.docs.tigera.io/v3.22/reference/installation/api#operator.tigera.io/v1.Installation
+apiVersion: operator.tigera.io/v1
+kind: Installation
+metadata:
+  name: default
+spec:
+  # Configures Calico networking.
+  calicoNetwork:
+    containerIPForwarding: Enabled
+    # Note: The ipPools section cannot be modified post-install.
+    ipPools:
+    - blockSize: 26
+      cidr: 192.168.3.0/20
+      encapsulation: VXLANCrossSubnet
+      natOutgoing: Enabled
+      nodeSelector: all()
+
+---
+
+# This section configures the Calico API server.
+# For more information, see: https://projectcalico.docs.tigera.io/v3.22/reference/installation/api#operator.tigera.io/v1.APIServer
+apiVersion: operator.tigera.io/v1
+kind: APIServer
+metadata:
+  name: default
+spec: {}
+{{< / highlight >}}
+----
+
+I added `containerIPForwarding: Enabled` and changed `cidr: 192.168.0.0/16` to `cidr: 192.168.3.0/20`. I applied this objects and everythings working fine. All mentioned issues are solved and the cluster is running fine.
+
+=== Conclusion
+
+For my server (and I guess that's basically true for all small servers) k3s offers a much better performance then microk8s. The installation is pretty easy and if you allready have a more or less 'automated' installation of your applications then migration is done with one-three hours (depending if you have speciall needs or not).
