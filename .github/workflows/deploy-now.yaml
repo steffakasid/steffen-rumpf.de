@@ -30,7 +30,7 @@ jobs:
         with:
           ruby-version: 2.7    
       - name: Setup Asciidoctor
-        uses: reitzig/actions-asciidoctor@v2.0.0
+        uses: reitzig/actions-asciidoctor@v2.0.2
         with:
           version: 2.0.17
       - name: Build project
