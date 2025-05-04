@@ -3,7 +3,8 @@ languageCode = 'de-de'
 title = 'steffakasid - the one and only'
 theme = 'hugo-coder'
 
-paginate = 20
+[pagination]
+    pagerSize = 20
 pygmentsStyle = "dracula"
 pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
