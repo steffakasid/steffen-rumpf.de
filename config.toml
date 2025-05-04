@@ -67,12 +67,6 @@ weight = 2
 url = "https://500px.com/steffakasid/"
 
 [[params.social]]
-name = "Twitter"
-icon = "fa fa-2x fa-twitter"
-weight = 3
-url = "https://twitter.com/steffakasid/"
-
-[[params.social]]
 name = "LinkedIn"
 icon = "fa fa-2x fa-linkedin"
 weight = 4
