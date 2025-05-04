@@ -17,7 +17,7 @@ enableEmoji = true
     allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^asciidoctor$']
 
 [params]
-author = "Steffen Rumpf"
+author = "Steffen Rumpf-Freese"
 license = '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA-4.0</a>'
 description = "steffakasid - the one and only"
 keywords = "blog,developer,personal"
