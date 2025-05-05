@@ -79,8 +79,8 @@ jobs:
 
             - name: Render real site-url to all files
               run: |
-                  for file in `grep -rl 'https://IONOS_DEPLOY_NOW_SITE_URL' .`; do
-                    sed -i $file -e 's|https://IONOS_DEPLOY_NOW_SITE_URL|${{ fromJson(steps.deployment.outputs.info).site-url }}|g'
+                  for file in `grep -rl 'https://steffen-rumpf.de' .`; do
+                    sed -i $file -e 's|https://steffen-rumpf.de|${{ fromJson(steps.deployment.outputs.info).site-url }}|g'
                   done
 
             - name: Render SSH user secret name
