@@ -1,0 +1,52 @@
+---
+title: "How to upgrade k3s with existing config file"
+date: 2025-06-18T17:55:11+02:00
+draft: false
+---
+
+==  How to upgrade k3s with existing config file
+
+A few years ago I switched from microk8s to k3s on my server. I described the setup process here: link:https://steffen-rumpf.de/2022/04/switch-microk8s-to-k3s/[Switch from microk8s to k3s]. Since then I had to upgrade k3s a few times and I always do not rember how I did it last time. So I thought it might be a good idea to write down the steps I did to upgrade k3s with an existing config file.
+
+The upgrade process generally is documented in link:https://docs.k3s.io/upgrades[Upgrading k3s]. Unfortunately I think this doesn't cover the case when you have an existing configuration file very well. 
+
+When I did the upgrade the first time I found out that it's a good idea to use a configuration file for k3s instead using `K3S_*` or `INSTALL_K3S_*` environment variables or command line arguments. So here is the configuration file I use. You can find the previous configuration with environmen variables in the comment:
+
+./etc/rancher/k3s/config.yaml
+[source,yaml]
+----
+{{< highlight sh "linenos=true" >}}
+# K3S_KUBECONFIG_MODE="644" INSTALL_K3S_EXEC="--flannel-backend=none --cluster-cidr=192.168.0.0/16 --disable-network-policy --disable=traefik" sh -\
+write-kubeconfig-mode: "0644"
+flannel-backen: "none"
+cluster-cidr: "192.168.0.0/16"
+disable:
+  - "traefik"
+disable-network-policy: true
+{{< / highlight >}}
+----
+
+NOTE: You can find more about this at link:https://docs.k3s.io/installation/configuration#configuration-file[Configuration File].
+
+Then you can just run the k3s installation script for the upgrade: 
+
+[source,sh]
+----
+{{< highlight sh "linenos=true" >}}
+curl -sfL https://get.k3s.io | sh -
+{{< / highlight >}}
+----
+
+That's it. I additionally had to update my kubeconfig:
+
+[source,sh]
+----
+{{< highlight sh "linenos=true" >}}
+cd
+cd .kube
+rm -rf *
+copy /etc/rancher/k3s/k3s.yaml config
+chmod 700 config
+{{< / highlight >}}
+----
+
