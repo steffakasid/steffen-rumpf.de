@@ -35,7 +35,7 @@ jobs:
 
             - uses: ruby/setup-ruby@v1
               with:
-                  ruby-version: 4.0.4
+                  ruby-version: 4.0.6
 
             - name: Setup Asciidoctor
               uses: reitzig/actions-asciidoctor@v2.0.4
